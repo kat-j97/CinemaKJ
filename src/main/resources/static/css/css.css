@@ -1,0 +1,112 @@
+/* Estilos para el header */
+header {
+    background-color: #333;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+  }
+  
+  .header-left h1 {
+    margin: 0;
+    font-size: 24px;
+    font-family: "Swis721 BlkCn BT", sans-serif; /* Agrega la tipografía al título */
+    font-style: italic bold;
+  }
+  
+  .header-right a {
+    text-decoration: none;
+    color: #ccc;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .header-right a:hover {
+    background-color: #ccc;
+    color: #333;
+  }
+  
+  /* Estilos para el nav */
+  nav {
+    background-color: midnightblue;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .nav-menu {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .nav-menu li {
+    flex-grow: 1;
+  }
+  
+  .nav-menu a {
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+    font-family: "Swis721 BlkCn BT", sans-serif; /* Agrega la tipografía al nav */
+    font-weight: bold;
+    font-style: italic;
+  }
+  
+  /* Estilos para el footer */
+  footer {
+    background-color: midnightblue;
+    padding: 8px;
+    text-align: center;
+    color: white;
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .footer-section {
+    margin: 0 20px;
+  }
+  
+  .footer-section h4 {
+    margin-bottom: 10px;
+    font-family: "Swis721 BlkCn BT", sans-serif; /* Agrega la tipografía a los títulos del footer */
+    font-weight: bold;
+    font-style: italic;
+  }
+  
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+  }
+  
+  .footer-section ul li {
+    margin-bottom: 5px;
+    white-space: nowrap;
+  }
+  
+  .footer-section ul li::before {
+    content: "- ";
+  }
+  
+  .footer-section p {
+    margin: 0;
+  }
+  
+  .footer-section a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-section a:hover {
+    color: #fff;
+  }
+
