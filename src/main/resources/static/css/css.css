@@ -47,7 +47,7 @@ header {
 
 /* Estilos para el nav */
 nav {
-  background-color: midnightblue;
+  background-color: #066CB5;
   padding: 5px;
   text-align: center;
 }
@@ -76,7 +76,7 @@ nav {
 
 /* Estilos para el footer */
 footer {
-  background-color: midnightblue;
+  background-color: #232125;
   padding: 30px 0;
   text-align: center;
   color: white;
