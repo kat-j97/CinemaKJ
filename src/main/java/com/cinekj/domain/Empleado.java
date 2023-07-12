@@ -1,4 +1,3 @@
-
 package com.cinekj.domain;
 
 import jakarta.persistence.*;

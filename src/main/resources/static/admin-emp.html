@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
     <head>
         <meta charset="UTF-8">
         <title>Administrador-Empleado</title>
@@ -34,29 +33,27 @@
     <div style="padding-left: 50px">
         <div class="row">
             <div class="col-md-9">
-                <div class="card" style="background-color: grey;">
-                    <div class="card-header" style="padding: 5px; background-color: black;">
-                        <h4 style="color: white; padding-left: 50px;">Empleados</h4>
+                <div class="card" ">
+                    <div class="card-header">
+                        <h4 >Empleados</h4>
                     </div>
                     <div th:if="${empleados != null and !empleados.empty}">
                         <table class="table table-striped table-hover">
                             <thead class="table-dark">
-                                <tr>
-                                    <th>#</th>
+                                <tr><th>#</th>
                                     <th>Nombre</th>
                                     <th>Apellidos</th>
                                     <th>Edad</th>
                                     <th>Puesto</th>
-                                    <th></th>
-                                </tr>
+                                    <th></th> </tr>
                             </thead>
                             <tbody>
                                 <tr th:each="empleado, contador : ${empleados}">
-                                    <td th:text="${contador.count}"></td>
-                                    <td th:text="${empleado.nombre}"></td>
-                                    <td th:text="${empleado.apellidos}"></td>
-                                    <td th:text="${empleado.edad}"></td>
-                                    <td th:text="${empleado.puesto}"></td>
+                                    <td> [[${contador.count}]]</td>
+                                    <td> [[${empleado.nombre}]]</td>
+                                    <td> [[${empleado.apellidos}]]</td>
+                                    <td> [[${empleado.edad}]]</td>
+                                    <td> [[${empleado.puesto}]]</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -69,8 +66,7 @@
         </div>
     </div>
 </section>
-
-
+        
         <br>
         <br>
         <br>
