@@ -10,36 +10,33 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-
-
 @Controller
 @Slf4j
 @RequestMapping("/empleado")
 public class EmpleadoController {
-    
+
     @Autowired
     EmpleadoService empleadoService;
-    
-    @GetMapping("/listado")
+
+    @GetMapping("/admin-emp")
     public String inicio(Model model) {
-        List<Empleado> empleados = empleadoService.getEmpleados();
-                
-        model.addAttribute("empleados", empleados);
-        model.addAttribute("totalEmpleados", empleados.size());
+      List<Empleado> empleados = empleadoService.getEmpleados();
+            model.addAttribute("empleados", empleados);
+
         return "/empleado/admin-emp";
     }
-    
+
+
     @GetMapping("/nuevo")
     public String EmpleadoNuevo(Empleado empleado) {
         return "/empleado/admin-emp";
     }
 
-   /* @Autowired
+    /* @Autowired
     private FirebaseStorageServiceImpl firebaseStorageService;*/
-    
     @PostMapping("/guardar")
     public String empleadoGuardar(Empleado empleado,
-            @RequestParam("imagenFile") MultipartFile imagenFile) {        
+            @RequestParam("imagenFile") MultipartFile imagenFile) {
         empleadoService.save(empleado);
         return "redirect:/empleado/admin-emp";
     }
