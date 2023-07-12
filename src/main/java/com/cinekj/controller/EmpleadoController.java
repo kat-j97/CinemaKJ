@@ -1,5 +1,9 @@
 package com.cinekj.controller;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 import com.cinekj.domain.Empleado;
 import com.cinekj.service.EmpleadoService;
 import java.util.List;
@@ -52,4 +56,5 @@ public class EmpleadoController {
         model.addAttribute("empleado", empleado);
         return "/empleado/admin-emp";
     }
+
 }
