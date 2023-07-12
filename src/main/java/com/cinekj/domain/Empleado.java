@@ -34,3 +34,5 @@ public class Empleado implements Serializable{
         this.contrasena = contrasena;
     }     
 }
+
+

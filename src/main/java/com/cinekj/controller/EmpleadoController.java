@@ -1,4 +1,4 @@
-package com.Tienda.controller;
+package com.cinekj.controller;
 
 import com.cinekj.domain.Empleado;
 import com.cinekj.service.EmpleadoService;
