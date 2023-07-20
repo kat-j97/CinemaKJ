@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"       
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="layout/plantilla :: head">
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header" />
+        
+
+        <nav>
+            <ul class="nav-menu">
+                <li><a class="boton" th:href="@{/}">Volver al Menu Principal</a></li>
+                <li>Bienvenido a Cinema K&Js</li>
+            </ul>
+        </nav>
+
+        <br>
+        <br>
+        <br>
+
+        <main>
+            <div class="login-content">
+                <h6 class="login-text">Por favor ingresa tus credenciales de usuario</h6>
+                <br>
+                <h6 class="login-text">Nombre de Usuario o ID</h6>
+                <input type="text" class="form-control" name="nombreUsuario" placeholder="Ingrese el nombre de Usuario" required="true"/>
+                    <br>
+                     <h6 class="login-text">Contrasena</h6>
+                <input type="text" class="form-control" name="contrasenaUsuario" placeholder="Contrasena" required="true"/>
+                 <br>
+                <div><a id="admin" href="administrador.html">Entrar</a>
+                </div> 
+            </div>
+        </main>
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+       
+                 
+          
+       <footer th:replace="layout/plantilla :: footer" />
+    </body>
+</html>

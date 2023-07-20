@@ -1,15 +1,59 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
+<html xmlns="http://www.w3.org/1999/xhtml"       
+      xmlns:th="http://www.thymeleaf.org">
 <html>
-    <head>
-        <title>TODO supply a title</title>
+    <head th:fragment="head">
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CinemaK&Js</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://kit.fontawesome.com/887a835504.js" crossorigin="anonymous"></script>
+        <link link th:href="@{/css/css.css}" rel="stylesheet" type="text/css"/>
+        <link link th:href="@{/css/nosotros.css}" rel="stylesheet" type="text/css"/>
+        <link link th:href="@{/css/login.css}" rel="stylesheet" type="text/css"/>
     </head>
+    
     <body>
-        <div>TODO write content</div>
+        <header th:fragment="header">
+            <div class="header-left">
+                <h1><a th:href="@{/}">Cinema K&Js</a></h1>
+            </div>
+            <div class="header-right">
+                <a th:href="@{/iniciosesion}">Iniciar Sesión</a>
+                <a href="#">Registrarse</a>
+            </div>
+        </header>
+        
+        <nav th:fragment="nav">
+            <ul class="nav-menu">
+                <li><a href="#">PELICULAS</a></li>
+                <li><a href="#">CARTELERA</a></li>
+                <li><a href="#">COMIDAS</a></li>
+                <li><a th:href="@{/empleado/admin}">TUS SALAS</a></li>
+                <li><a th:href="@{/nosotros}">NOSOTROS</a></li>
+            </ul>
+        </nav>
+        
+        <footer th:fragment="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>EMISION Y PROXIMAMENTE</h4>
+                    <ul>
+                        <li>Cartelera</li>
+                        <li>Proximas a Salir</li>
+                        <li>Preventa</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>QUIENES SOMOS</h4>
+                    <p>Nuestra Historia</p>
+                </div>
+                <div class="footer-section">
+                    <h4>SIGUENOS</h4>
+                    <!-- Aquí puedes agregar los enlaces a tus redes sociales -->
+                </div>
+            </div>
+        </footer>
+        
     </body>
 </html>

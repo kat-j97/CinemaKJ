@@ -12,17 +12,7 @@
     color: red;
 }
 
-.nav-menu{
-    display: flex;
-    align-items: center;
-    color: white;
-    text-align: center;
-    font-family: 'Swis721 BlkCn BT', sans-serif;
-    font-weight: bold;
-    font-style: italic;
-    margin-right: 32%;
-    font-size: 20px;
-}
+
 
 #admin {
     padding: 13px;

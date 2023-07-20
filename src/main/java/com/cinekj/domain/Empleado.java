@@ -1,3 +1,4 @@
+
 package com.cinekj.domain;
 
 import jakarta.persistence.*;
@@ -10,12 +11,12 @@ import lombok.Data;
 @Table(name="empleado")
 public class Empleado implements Serializable{
     
-    private static final long serialVersionUID = 1L; //Version de Serializacion
-    //Aqui llamamos los atributos de la tabla vs Java
-    @Id //Asie s como sale en la tabla SQL y llamarlo 
-    @GeneratedValue( strategy = GenerationType.IDENTITY) //Hay que asignarle una estrategia al ID
+    private static final long serialVersionUID = 1L; 
+    
+    @Id  
+    @GeneratedValue(strategy = GenerationType.IDENTITY) 
     @Column(name="id_empleado")
-    private Long idEmpleado; //Se transforma en id_Arbol
+    private Long idEmpleado; 
     private String nombre;
     private String apellidos;
     private int edad;

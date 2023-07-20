@@ -11,13 +11,14 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class EmpleadoServiceImpl implements EmpleadoService {
 
-    @Autowired
+    @Autowired 
     private EmpleadoDao empleadoDao;
 
     @Override
-    @Transactional(readOnly = true) //Springframework (Es unicamente para lectura)
+    @Transactional(readOnly = true) 
     public List<Empleado> getEmpleados() {
         List<Empleado> lista = empleadoDao.findAll();
+
         return lista;
     }
 
