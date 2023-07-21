@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"       
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
     <head th:replace="layout/plantilla :: head">
     </head>
     <body>
@@ -12,6 +13,8 @@
                 <li>Bienvenido Administrador</li>
             </ul>
         </nav>
+
+
 
         <br>
             <br>
@@ -33,16 +36,25 @@
                                                         <th>Nombre</th>
                                                         <th>Apellidos</th>
                                                         <th>Edad</th>
-                                                        <th>Puesto</th>
+                                                        <th>Puesto</th><th></th><th></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <tr th:each="empleado, contador : ${empleados}">
-                                                        <td th:text="${contador.index}"></td>
+                                                        <td th:text="${contador.count}"></td>
                                                         <td th:text="${empleado.nombre}"></td>
                                                         <td th:text="${empleado.apellidos}"></td>
                                                         <td th:text="${empleado.edad}"></td>
-                                                        <td th:text="${empleado.puesto}"></td></tr>    
+                                                        <td th:text="${empleado.puesto}"></td>
+
+                                                        <td>
+                                                    <a th:href="@{/empleado/eliminar/}+${empleado.idEmpleado}"
+                                                       class="btn btn-danger">
+                                                        <i class="fas fa-trash"></i> Eliminar</a>
+                                                    <a th:href="@{/empleado/modificar/}+${empleado.idEmpleado}"
+                                                       class="btn btn-success">
+                                                        <i class="fas fa-pencil"></i> Actualizar</a><td></tr>
+
                                                 </tbody>
                                             </table>
 
@@ -55,7 +67,10 @@
                             </div>
                         </div>
                     </section>
-                    
+
+                    <section th:replace="fragmentosAdmin :: botonesAgregar"/>
+                    <section th:replace="fragmentosAdmin :: agregarEmpleado"/>
+
                     <br>
                         <br>
                             <br>

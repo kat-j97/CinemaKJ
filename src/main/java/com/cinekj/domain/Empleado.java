@@ -3,7 +3,6 @@ package com.cinekj.domain;
 
 import jakarta.persistence.*;
 import java.io.Serializable;
-import java.sql.Blob;
 import lombok.Data;
 
 @Data //Permite crear los Set and Getters
@@ -21,12 +20,12 @@ public class Empleado implements Serializable{
     private String apellidos;
     private int edad;
     private String puesto;
-    private Blob contrasena;
+    private String contrasena;
 
     public Empleado() {
     }
 
-    public Empleado(String nombre, String apellidos, int edad, String puesto, Blob contrasena) {
+    public Empleado(String nombre, String apellidos, int edad, String puesto, String contrasena) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.edad = edad;

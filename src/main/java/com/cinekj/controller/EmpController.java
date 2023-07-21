@@ -30,29 +30,28 @@ public class EmpController {
     
     @GetMapping("/nuevo")
     public String empleadoNuevo(Empleado empleado) {
-        return "/empleado/modifica";
+        return "modificaEmp";
     }
 
 
     @PostMapping("/guardar")
-    public String empleadoGuardar(Empleado empleado,
-            @RequestParam("imagenFile") MultipartFile imagenFile) {
+    public String empleadoGuardar(Empleado empleado) {
         empleadoService.save(empleado);
-        return "redirect: admin-empleado";
+        return "redirect:/empleado/admin";
     }
 
  
     @GetMapping("/eliminar/{idEmpleado}")
     public String empleadoEliminar(Empleado empleado) {
         empleadoService.delete(empleado);
-        return "redirect:admin-empleado";
+        return "redirect:/empleado/admin";
     }
 
     @GetMapping("/modificar/{idEmpleado}")
     public String empleadoModificar(Empleado empleado, Model model) {
         empleado = empleadoService.getEmpleado(empleado);
         model.addAttribute("empleado", empleado);
-        return "/empleado/modifica";
+        return "modificaEmp";
     }
     
 }
