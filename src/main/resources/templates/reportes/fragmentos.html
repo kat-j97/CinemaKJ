@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Reportes</title>
+    </head>
+    <body>
+        <!-- 1 Sección para crear el boton de agregar... llamará a una ventana modal-->
+        <section th:fragment="botonesAgregar" class="py-4">
+            <div class="container" >
+                <div class="row" >
+                    <div class="col-md-3" >   
+                        <button 
+                            type="button" 
+                            class="btn btn-block" 
+                            data-bs-toggle="modal" 
+                            data-bs-target="#agregarReporte" style="background-color: grey">
+                            <i class="fas fa-plus"></i> Crear Reporte
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- 2 Fragmento para agregar categoria, es la ventana modal -->
+        <section th:fragment="crearReporte">
+            <div id="crearReporte" 
+                 class="modal fade" 
+                 tabindex="-1" 
+                 aria-labelledby="exampleModalLabel" 
+                 aria-hidden="true">
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+                        <div class="modal-header bg-secondary text-white">
+                            <h5 class="modal-title">Crear Reporte</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div> 
+                        <form th:action="@{/empleado/guardar}" th:object="${empleado}"
+                              method="POST" class="was-validated" enctype="multipart/form-data" style="color: black">
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label for="nombre">Nombre</label>
+                                    <input type="text" class="form-control" name="Nombre" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="apellidos">Apellidos</label>
+                                    <input type="text" class="form-control" name="Apellidos" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="edad">Edad</label>
+                                    <input type="number" class="form-control" name="Edad" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="puesto">Puesto</label>
+                                    <input type="text" class="form-control" name="Puesto" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="contrasena">Contraseña Temporal</label>
+                                    <input type="text" class="form-control" name="contrasena" required="true"/>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-secondary" type="submit">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- 3 Sección principal para mostrar la informaccion de la entidad categoria -->
+        <section th:fragment="reporteEmpleado">
+            <div  style="padding-left: 50px">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="card" style="background-color: grey;">
+                            <div class="card-header" style="padding: 5px; background-color: black;">
+                                <h4 style="color: white;">Reportes</h4>
+                            </div>
+                            <div th:if="${reportes != null and !reportes.empty}">
+                                <table class="table table-striped table-hover">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th>Num. Reporte</th>
+                                            <th>Num. Sala</th>
+                                            <th>Descripcion</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="reporte, contador : ${reportes}">
+                                            <td th:text="${contador.count}"></td>
+                                            <td th:text="${reporte.idSala}"></td>
+                                            <td th:text="${reporte.descripcion}"></td></tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <div class="text-center p-2" th:if="${reportes == null or reportes.empty}">
+                                <span>Lista Vacia</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- 4 Fragmento que se utiliza en la página modifca.html -->
+        <section th:fragment="editarEmpleado">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <form method="POST"
+                          th:action="@{/empleado/guardar}" 
+                          th:object="${empleado}"
+                          class="was-validated"                          
+                          enctype="multipart/form-data">
+                        <input type="hidden" name="idEmpleado" th:field="*{idEmpleado}"/>
+                        <section th:replace="~{fragmentosAdmin :: botonesEditar}"/>
+                        <div id=details>
+                            <div class="container" >
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="card" style="background-color: Grey">
+                                            <div class="card-header" style="background-color: black">
+                                                <h4>Actualizar</h4>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="mb-3">
+                                                    <label for="nombre">Nombre:</label>
+                                                    <input type="text" class="form-control" 
+                                                           name="nombre" th:field="*{nombre}"
+                                                           required="true">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="apellidos">Apellidos:</label>
+                                                    <input type="text" class="form-control" name="apellidos" th:field="*{apellidos}" required="true"/>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="edad">Edad:</label>
+                                                    <input type="number" class="form-control" name="edad" th:field="*{edad}" required="true"/>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="puesto">Puesto:</label>
+                                                    <input type="text" class="form-control" name="puesto" th:field="*{puesto}" required="true"/>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="contrasena">Contraseña:</label>
+                                                    <input type="text" class="form-control" name="contrasena" th:field="*{contrasena}" required="true"/>
+                                                </div>
+
+
+
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- 5 Fragmento que se utiliza en el fragmento anterior -->
+        <section th:fragment="botonesEditar">
+            <div class="container py-4 ">
+                <div class="row">
+                    <div class="col-md-4 d-grid">
+                        <a th:href="@{/empleado/admin}" class="btn btn-primary">
+                            <i class="fas fa-arrow-left"></i> Regresar
+                        </a>
+                    </div>
+                    <div class="col-md-4 d-grid">                                
+                        <a th:href="@{/empleado/eliminar/}+${empleado.idEmpleado}"
+                           class="btn btn-danger">
+                            <i class="fas fa-trash"></i> Eliminar
+                        </a>
+                    </div>
+                    <div class="col-md-4 d-grid">
+                        <button type="submit" class="btn btn-success">
+                            <i class="fas fa-check"></i> Guardar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>                 
+
+    </body>
+</html>
