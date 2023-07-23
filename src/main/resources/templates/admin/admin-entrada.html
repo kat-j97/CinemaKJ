@@ -4,14 +4,9 @@
     <head th:replace="layout/plantilla :: head">
     </head>
     <body>
-        <header th:replace="layout/plantilla :: header" />
+        <header th:replace="layout/plantillaAdmin :: header" />
+        <nav th:replace="layout/plantillaAdmin :: nav" />
 
-        <nav>
-            <ul class="nav-menu">
-                <li><a class="boton" th:href="@{/}">Volver al Menu Principal</a></li>
-                <li>Bienvenido Administrador</li>
-            </ul>
-        </nav>
 
 
 
@@ -64,8 +59,8 @@
                                                                 </div>
                                                                 </section>
 
-                                                                <section th:replace="fragmentosAdminEntrada :: botonesAgregar"/>
-                                                                <section th:replace="fragmentosAdminEntrada :: agregarEntrada"/>
+                                                                <section th:replace="admin/fragmentosAdminEntrada :: botonesAgregar"/>
+                                                                <section th:replace="admin/fragmentosAdminEntrada :: agregarEntrada"/>
 
                                                                 <br>
                                                                     <br>
@@ -77,6 +72,6 @@
 
 
 
-                                                                                        <footer th:replace="layout/plantilla :: footer" />
+                                                                                        <footer th:replace="layout/plantillaAdmin :: footer" />
                                                                                         </body>
                                                                                         </html>

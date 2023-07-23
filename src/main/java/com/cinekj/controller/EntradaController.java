@@ -24,12 +24,12 @@ public class EntradaController {
         List<Entrada> entradas = entradaService.getEntradas();
         model.addAttribute("entradas", entradas);
         model.addAttribute("totalEntradas", entradas.size());
-        return "admin-entrada";
+        return "admin/admin-entrada";
     }
 
     @GetMapping("/nuevo")
     public String entradaNuevo(Entrada entrada) {
-        return "modificaEntrada";
+        return "admin/modificaEntrada";
     }
 
     @PostMapping("/guardar")
@@ -48,6 +48,6 @@ public class EntradaController {
     public String entradaModificar(Entrada entrada, Model model) {
         entrada = entradaService.getEntrada(entrada);
         model.addAttribute("entrada", entrada);
-        return "modificaEntrada";
+        return "admin/modificaEntrada";
     }
 }

@@ -43,7 +43,7 @@ public class ReporteController {
     @GetMapping("/eliminar/{idReporte}")
     public String reporteEliminar(Reporte reporte) {
         reporteService.delete(reporte);
-        return "redirect:/empleado/reporte";
+        return "redirect:/reporte/empleado";
     }
 
     @GetMapping("/modificar/{idReporte}")

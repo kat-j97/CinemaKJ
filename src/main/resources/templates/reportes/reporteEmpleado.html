@@ -5,20 +5,16 @@
     <head th:replace="layout/plantilla :: head">
     </head>
     <body>
-        <header th:replace="layout/plantilla :: header" />
+        <header th:replace="layout/plantillaAdmin :: header" />
+        <nav th:replace="layout/plantillaAdmin :: nav" />
 
 
 
-        <nav>
-            <ul class="nav-menu">
-                <li><a class="boton" th:href="@{/}">Volver al Menu Principal</a></li>
-                <li>Reporte de Incidencias</li>
-            </ul>
-        </nav>
+        
         <br>
             <br>
                 <br>
                     <section th:replace="reportes/fragmentos :: reporteEmpleado" />
                     </body>
 
-                    <footer th:replace="layout/plantilla :: footer" />
+                    <footer th:replace="layout/plantillaAdmin :: footer" />

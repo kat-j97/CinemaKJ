@@ -76,7 +76,7 @@
 
         <!-- 3 Sección principal para mostrar la informaccion de la entidad categoria -->
         <section th:fragment="reporteEmpleado">
-            <div  style="padding-left: 50px">
+            <div  style="padding-left: 50px; padding-right: 100px">
                 <div class="row">
                     <div class="col-md-9">
                         <div class="card" style="background-color: grey;">
@@ -89,14 +89,18 @@
                                         <tr>
                                             <th>Num. Reporte</th>
                                             <th>Num. Sala</th>
-                                            <th>Descripcion</th>
+                                            <th>Descripcion</th><th></th><th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr th:each="reporte, contador : ${reportes}">
                                             <td th:text="${contador.count}"></td>
                                             <td th:text="${reporte.idSala}"></td>
-                                            <td th:text="${reporte.descripcion}"></td></tr>
+                                            <td th:text="${reporte.descripcion}"></td>
+                                            
+                                            <td><a th:href="@{/reporte/eliminar/}+${reporte.idReporte}"
+                                               class="btn btn-danger">
+                                                    <i class="fas fa-trash"></i> Eliminar</a><td></td></tr>
                                     </tbody>
                                 </table>
 
@@ -106,7 +110,29 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-header" style="background-color: black; color: white;">
+                                <h4>Formulario de Reporte</h4>
+                            </div>
+                            <div class="card-body text-center" style="background-color: grey">
+                                <form th:action="@{/reporte/guardar}" th:object="${reporte}" method="POST" class="was-validated" enctype="multipart/form-data">
+                                    <div class="form-group">
+                                        <label for="idSala">Num. Sala</label>
+                                        <input type="number" class="form-control" id="idSala" name="idSala" placeholder="Ingrese el número de sala">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="descripcion">Descripción</label>
+                                        <textarea class="form-control" id="descripcion" name="descripcion" rows="3" placeholder="Ingrese la descripción del incidente"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Enviar Reporte</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </div>
             </div>
         </section>
 

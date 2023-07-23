@@ -24,12 +24,12 @@ public class EmpController {
       List<Empleado> empleados = empleadoService.getEmpleados();
             model.addAttribute("empleados", empleados);
             model.addAttribute("totalEmpleados", empleados.size());
-        return "admin-empleado";
+        return "/admin/admin-empleado";
     }
     
     @GetMapping("/nuevo")
     public String empleadoNuevo(Empleado empleado) {
-        return "modificaEmp";
+        return "/admin/modificaEmp";
     }
 
 
@@ -50,7 +50,7 @@ public class EmpController {
     public String empleadoModificar(Empleado empleado, Model model) {
         empleado = empleadoService.getEmpleado(empleado);
         model.addAttribute("empleado", empleado);
-        return "modificaEmp";
+        return "/admin/modificaEmp";
     }
     
 }
