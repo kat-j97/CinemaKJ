@@ -9,5 +9,7 @@ public interface UsuarioService {
     public Usuario getUsuario(Usuario usuario);
     public void save(Usuario usuario);
     public void delete(Usuario usuario);
+    
+    
 
 }

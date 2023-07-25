@@ -7,14 +7,16 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "usuario")
+@Table(name="usuario")
 public class Usuario implements Serializable {
+    
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_usuario")
+    @Column(name="id_usuario")
     private Long idUsuario;
-    private String usuario;
+    private String unombre;
     private String correo;
     private String contrasena;
     private String nombre;
@@ -24,8 +26,8 @@ public class Usuario implements Serializable {
     public Usuario() {
     }
 
-    public Usuario(String usuario, String correo, String contrasena, String nombre, String apellidos, int edad) {
-        this.usuario = usuario;
+    public Usuario(String unombre, String correo, String contrasena, String nombre, String apellidos, int edad) {
+        this.unombre = unombre;
         this.correo = correo;
         this.contrasena = contrasena;
         this.nombre = nombre;
