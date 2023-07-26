@@ -13,7 +13,7 @@
             <div class="d-flex justify-content-center align-items-center" >
                 <form th:action="@{/registro/guardar}" th:object="${usuario}" method="POST" class="was-validated card" enctype="multipart/form-data" style="color: white; background-color: grey; width: 400px" >
 
-                    <div class="form-group text-center">
+                    <div class="form-group text-center" style="padding-top: 20px">
                         <label for="unombre">Cree un Usuario</label>
                         <input type="text" class="form-control" id="unombre" name="unombre" required="true"/>
                     </div>
