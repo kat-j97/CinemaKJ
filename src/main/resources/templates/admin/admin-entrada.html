@@ -20,15 +20,15 @@
                                 <div class="col-md-9">
                                     <div class="card" style="background-color: grey;">
                                         <div class="card-header" style="padding: 5px; background-color: black;">
-                                            <h4 style="color: white;">Tipos de Entradas</h4>
+                                            <h4 style="color: white;">[[#{admin.entrada.titulo}]]</h4>
                                         </div>
                                         <div th:if="${entradas != null and !entradas.empty}">
                                             <table class="table table-striped table-hover">
                                                 <thead class="table-dark">
                                                     <tr>
-                                                        <th>Entrada Num.</th>
-                                                        <th>Precio</th>
-                                                        <th>Tipo</th>
+                                                        <th>[[#{admin.table.entrada}]]</th>
+                                                        <th>[[#{general.precio}]]</th>
+                                                        <th>[[#{general.tipo}]]</th>
                                                         <th></th><th></th>
                                                     </tr>
                                                 </thead>
@@ -41,17 +41,17 @@
                                                         <td>
                                                             <a th:href="@{/entrada/eliminar/}+${entrada.idEntrada}"
                                                                class="btn btn-danger">
-                                                                <i class="fas fa-trash"></i> Eliminar</a>
+                                                                <i class="fas fa-trash"></i> [[#{admin.eliminar}]]</a>
                                                             <a th:href="@{/entrada/modificar/}+${entrada.idEntrada}"
                                                                class="btn btn-success">
-                                                                <i class="fas fa-pencil"></i> Actualizar</a><td></tr>
+                                                                <i class="fas fa-pencil"></i> [[#{admin.actualizar}]]</a><td></tr>
 
                                                                 </tbody>
                                                                 </table>
 
                                                                 </div>
                                                                 <div class="text-center p-2" th:if="${entradas == null or entradas.empty}">
-                                                                    <span>Lista Vacia</span>
+                                                                    <span>[[#{admin.vacia}]]</span>
                                                                 </div>
                                                                 </div>
                                                                 </div>

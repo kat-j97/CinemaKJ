@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
     <head th:replace="~{layout/plantilla :: head}">
-        <title>Reportes</title>
+        <title>[[#{fragmentos.reportes}]]</title>
     </head>
     <body>
        
@@ -15,15 +15,15 @@
                     <div class="col-md-9">
                         <div class="card" style="background-color: grey;">
                             <div class="card-header" style="padding: 5px; background-color: black;">
-                                <h4 style="color: white;">Reportes</h4>
+                                <h4 style="color: white;">[[#{fragmento.reportes}]]</h4>
                             </div>
                             <div th:if="${reportes != null and !reportes.empty}">
                                 <table class="table table-striped table-hover">
                                     <thead class="table-dark">
                                         <tr>
-                                            <th>Num. Reporte</th>
-                                            <th>Num. Sala</th>
-                                            <th>Descripcion</th><th></th><th>
+                                            <th>[[#{fragmentos.numreportes}]]</th>
+                                            <th>[[#{fragmentos.sala}]]</th>
+                                            <th>[[#{fragmentos.descripcion}]]</th><th></th><th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -34,13 +34,13 @@
                                             
                                             <td><a th:href="@{/reporte/eliminar/}+${reporte.idReporte}"
                                                class="btn btn-danger">
-                                                    <i class="fas fa-trash"></i> Eliminar</a><td></td></tr>
+                                                    <i class="fas fa-trash"></i> [[#{admin.eliminar}]]</a><td></td></tr>
                                     </tbody>
                                 </table>
 
                             </div>
                             <div class="text-center p-2" th:if="${reportes == null or reportes.empty}">
-                                <span>Lista Vacia</span>
+                                <span>[[#{admin.vacia}]]</span>
                             </div>
                         </div>
                     </div>
@@ -48,19 +48,19 @@
                     <div class="col-md-3">
                         <div class="card">
                             <div class="card-header" style="background-color: black; color: white;">
-                                <h4>Formulario de Reporte</h4>
+                                <h4>[[#{fragmentos.formulario}]]</h4>
                             </div>
                             <div class="card-body text-center" style="background-color: grey">
                                 <form th:action="@{/reporte/guardar}" th:object="${reporte}" method="POST" class="was-validated" enctype="multipart/form-data">
                                     <div class="form-group">
-                                        <label for="idSala">Num. Sala</label>
+                                        <label for="idSala">[[#{fragmentos.numsala}]]</label>
                                         <input type="number" class="form-control" id="idSala" name="idSala" placeholder="Ingrese el número de sala">
                                     </div>
                                     <div class="form-group">
-                                        <label for="descripcion">Descripción</label>
+                                        <label for="descripcion">[[#{fragmentos.descripcion}]]</label>
                                         <textarea class="form-control" id="descripcion" name="descripcion" rows="3" placeholder="Ingrese la descripción del incidente"></textarea>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Enviar Reporte</button>
+                                    <button type="submit" class="btn btn-primary">[[#{fragmentos.enviar}]]</button>
                                 </form>
                             </div>
                         </div>

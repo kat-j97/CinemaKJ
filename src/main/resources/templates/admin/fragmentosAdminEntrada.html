@@ -16,7 +16,7 @@
                             class="btn btn-block" 
                             data-bs-toggle="modal" 
                             data-bs-target="#agregarEntrada" style="background-color: grey">
-                            <i class="fas fa-plus"></i> Agregar Entrada
+                            <i class="fas fa-plus"></i> [[#{admin.fragm.ticket}]]
                         </button>
                     </div>
                 </div>
@@ -33,23 +33,23 @@
                 <div class="modal-dialog modal-md">
                     <div class="modal-content">
                         <div class="modal-header bg-secondary text-white">
-                            <h5 class="modal-title">Agregar Entrada</h5>
+                            <h5 class="modal-title">[[#{admin.fragm.ticket}]]</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div> 
                         <form th:action="@{/entrada/guardar}" th:object="${empleado}"
                               method="POST" class="was-validated" enctype="multipart/form-data" style="color: black">
                             <div class="modal-body">
                                 <div class="mb-3">
-                                    <label for="Precio">Precio</label>
+                                    <label for="Precio">[[#{general.precio}]]</label>
                                     <input type="text" class="form-control" name="Precio" required="true"/>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="Tipo">Tipo</label>
+                                    <label for="Tipo">[[#{general.tipo}]]</label>
                                     <input type="text" class="form-control" name="Tipo" required="true"/>
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button class="btn btn-secondary" type="submit">Guardar</button>
+                                <button class="btn btn-secondary" type="submit">[[#{admin.guardar}]]</button>
                             </div>
                         </form>
                     </div>
@@ -57,49 +57,7 @@
             </div>
         </section>
 
-        <!-- 3 Sección principal para mostrar la informaccion de la entidad categoria -->
-        <section th:fragment="listadoArbol" id="entradas">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-9">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4>[[#{arbol.listado}]]</h4>
-                            </div>
-                            <div th:if="${arboles != null and !arboles.empty}">
-                                <table class="table table-striped table-hover">
-                                    <thead class="table-dark">
-                                        <tr><th>#</th>
-                                            <th>[[#{arbol.nombre}]]</th>
-                                            <th>[[#{arbol.tipof}]]</th>
-                                            <th>[[#{arbol.tipoArbol}]]</th>
-                                            <th></th></tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr th:each="arbol, contador : ${arboles}">
-                                            <td>[[${contador.count}]]</td>
-                                            <td>[[${arbol.nombre}]]</td>                                   
-                                            <td>[[${arbol.tipoFlor}]]</td>
-                                            <td>[[${arbol.tipoArbol}]]</td>
-
-                                            <td><a th:href="@{/arbol/eliminar/}+${arbol.idArbol}"
-                                                   class="btn btn-danger">
-                                                    <i class="fas fa-trash"></i> [[#{accion.eliminar}]]</a>
-                                                <a th:href="@{/arbol/modificar/}+${arbol.idArbol}"
-                                                   class="btn btn-success" style="background-color: burlywood">
-                                                    <i class="fas fa-pencil"></i> [[#{accion.actualizar}]]</a></td></tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="text-center p-2" th:if="${arboles == null or arboles.empty}">
-                                <span>[[#{lista.vacia}]]</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
+        
 
         <!-- 4 Fragmento que se utiliza en la página modifca.html -->
         <section th:fragment="editarEntrada">
@@ -119,17 +77,17 @@
                                     <div class="col">
                                         <div class="card" style="background-color: Grey">
                                             <div class="card-header" style="background-color: black">
-                                                <h4>Actualizar</h4>
+                                                <h4>[[#{admin.actualizar}]]</h4>
                                             </div>
                                             <div class="card-body">
                                                 <div class="mb-3">
-                                                    <label for="precio">Precio:</label>
+                                                    <label for="precio">[[#{general.precio}]]</label>
                                                     <input type="number" class="form-control" 
                                                            name="precio" th:field="*{precio}"
                                                            required="true">
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="tipo">Tipo:</label>
+                                                    <label for="tipo">[[#{general.tipo}]]</label>
                                                     <input type="text" class="form-control" name="tipo" th:field="*{tipo}" required="true"/>
                                                 </div>          
                                             </div>
@@ -149,18 +107,18 @@
                 <div class="row">
                     <div class="col-md-4 d-grid">
                         <a th:href="@{/entrada/admin}" class="btn btn-primary">
-                            <i class="fas fa-arrow-left"></i> Regresar
+                            <i class="fas fa-arrow-left"></i> [[#{btn.regresar}]]
                         </a>
                     </div>
                     <div class="col-md-4 d-grid">                                
                         <a th:href="@{/entrada/eliminar/}+${entrada.idEntrada}"
                            class="btn btn-danger">
-                            <i class="fas fa-trash"></i> Eliminar
+                            <i class="fas fa-trash"></i> [[#{admin.eliminar}]]
                         </a>
                     </div>
                     <div class="col-md-4 d-grid">
                         <button type="submit" class="btn btn-success">
-                            <i class="fas fa-check"></i> Guardar
+                            <i class="fas fa-check"></i> [[#{admin.guardar}]]
                         </button>
                     </div>
                 </div>

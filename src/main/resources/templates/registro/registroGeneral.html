@@ -14,27 +14,27 @@
                 <form th:action="@{/registro/guardar}" th:object="${usuario}" method="POST" class="was-validated card" enctype="multipart/form-data" style="color: white; background-color: grey; width: 400px" >
 
                     <div class="form-group text-center" style="padding-top: 20px">
-                        <label for="unombre">Cree un Usuario</label>
+                        <label for="unombre">[[#{registro.u}]]</label>
                         <input type="text" class="form-control" id="unombre" name="unombre" required="true"/>
                     </div>
                     <div class="form-group text-center">
-                        <label for="correo">Correo Electrónico</label>
+                        <label for="correo">[[#{registro.u.correo}]]</label>
                         <input type="text" class="form-control" id="correo" name="correo" required="true"/>
                     </div>
                     <div class="form-group text-center">
-                        <label for="contrasena">Cree una Contraseña</label>
+                        <label for="contrasena">[[#{registro.u.clave}]]</label>
                         <input type="password" class="form-control" id="contrasena" name="contrasena" required="true"/>
                     </div>
                     <div class="form-group text-center">
-                        <label for="nombre">Nombre</label>
+                        <label for="nombre">[[#{general.nombre}]]</label>
                         <input type="text" class="form-control" id="nombre" name="nombre" required="true"/>
                     </div>
                     <div class="form-group text-center">
-                        <label for="apellidos">Apellidos</label>
+                        <label for="apellidos">[[#{general.apellidos}]]</label>
                         <input type="text" class="form-control" id="apellidos" name="apellidos" required="true"/>
                     </div>
                     <div class="form-group text-center">
-                        <label for="edad">Edad</label>
+                        <label for="edad">[[#{general.edad}]]</label>
                         <input type="number" class="form-control" id="edad" name="edad" required="true"/>
                     </div>
                     <br>
@@ -46,7 +46,7 @@
                         </div>
                         <br>
                             <div class="d-flex justify-content-center">
-                                <button type="submit" class="btn btn-primary">Registrar</button>
+                                <button type="submit" class="btn btn-primary">[[#{btn.registrar}]]</button>
                             </div>
                             <br>
                                 </form>
