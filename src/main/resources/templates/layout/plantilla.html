@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"       
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <html>
     <html>
         <head th:fragment="head">
             <meta charset="UTF-8">
@@ -17,12 +19,20 @@
                     <link link th:href="@{/css/nosotros.css}" rel="stylesheet" type="text/css"/>
                     <link link th:href="@{/css/login.css}" rel="stylesheet" type="text/css"/>
                     </head>
+        
+       
+       
 
                     <body>
                         <header th:fragment="header">
                             <div class="header-left">
-                                <h1><a th:href="@{/}">[[#{plantilla.header}]]</a></h1>
+                                <h1><a th:href="@{/}">[[#{plantilla.header}]]</a></h1>                                    
                             </div>
+                            <div class="header-panel">
+                                <a th:href="@{/panel}" sec:authorize="hasRole('ROLE_VENDEDOR') or hasRole('ROLE_ADMIN')">
+                                    [[#{general.sistema}]]</a>
+                            </div>
+                            
                             
                             <div class="header-right">
                                 <a th:href="@{/iniciosesion}">[[#{plantilla.login}]]</a>

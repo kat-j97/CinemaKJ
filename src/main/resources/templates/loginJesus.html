@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"       
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="layout/plantilla :: head">
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header" />
+        
+
+        <nav>
+            <ul class="nav-menu">
+                <li><a class="boton" th:href="@{/}">[[#{mensaje.volver}]]</a></li>
+                <li>[[#{mensaje.bienvenido}]]</li>
+            </ul>
+        </nav>
+
+        <br>
+        <br>
+        <br>
+
+        <main>
+            <div class="login-content">
+                <h6 class="login-text">[[#{mensaje.credenciales}]]</h6>
+                <br>
+                <h6 class="login-text">[[#{mensaje.usuario}]]</h6>
+                <input type="text" class="form-control" name="nombreUsuario" placeholder="Ingrese el nombre de Usuario" required="true"/>
+                    <br>
+                     <h6 class="login-text">[[#{login.password}]]</h6>
+                <input type="text" class="form-control" name="contrasenaUsuario" placeholder="Contrasena" required="true"/>
+                 <br>
+                <div><a id="admin" href="administrador.html">[[#{entrar.entrar}]]</a>
+                </div> 
+            </div>
+        </main>
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+       
+                 
+          
+       <footer th:replace="layout/plantilla :: footer" />
+    </body>
+</html>
