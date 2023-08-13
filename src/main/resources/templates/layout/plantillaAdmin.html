@@ -26,13 +26,15 @@
                             </div>
                             <div class="header-right">
                                 <a th:href="@{/iniciosesion}">[[#{plantilla.login}]]</a>
-                                <a th:href="@{/registro/usuario}">[[#{plantilla.signin}]]</a>
-
+                                <a th:href="@{/regis/usuario}">[[#{plantilla.signin}]]</a>
+                            
                                 <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Lang</a>
                                 <ul class="dropdown-menu dropdown-menu-dark">
                                     <li><a class="dropdown-item"  th:href="@{/(lang=es)}">ES</a></li>
                                     <li><a class="dropdown-item" th:href="@{/(lang=en)}">EN</a></li>
                                 </ul>
+                           
+
                             </div>
                         </header>
 

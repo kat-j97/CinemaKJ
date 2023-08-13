@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
-@RequestMapping("/registro")
+@RequestMapping("/regis")
 public class UsuarioController {
     
     @Autowired
@@ -29,7 +29,7 @@ public class UsuarioController {
     @PostMapping("/guardar")
     public String usuarioGuardar(Usuario usuario) {
         usuarioService.save(usuario);
-        return "redirect:/registro/usuario";
+        return "redirect:/regis/usuario";
     }
     
  

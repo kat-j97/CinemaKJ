@@ -17,16 +17,16 @@
         <div class="container mt-5">
             <div class="row justify-content-center">
                 <div class="btn-container">
-                    <a th:href="@{/empleado/admin}" class="btn btn-primary btn-lg btn-block"> [[#{panel.comida}]]</a>
-                    <a th:href="@{/empleado/admin}" class="btn btn-primary btn-lg btn-block"> [[#{panel.empleado}]]</a>
-                    <a th:href="@{/entrada/adminEntrada}" class="btn btn-primary btn-lg btn-block"> [[#{panel.entrada}]]</a>
-                    <a th:href="@{/empleado/admin}" class="btn btn-primary btn-lg btn-block"> [[#{panel.pelicula}]]</a>
-                    <a th:href="@{/empleado/admin}" class="btn btn-primary btn-lg btn-block"> [[#{panel.salas}]]</a>
-                    <a th:href="@{/empleado/admin}" class="btn btn-primary btn-lg btn-block"> [[#{panel.admin}]]</a>
+                    <a th:href="@{/empleado/admin}" class="btn btn-primary btn-lg btn-block" sec:authorize="hasRole('ROLE_ADMIN')"> [[#{panel.comida}]]</a>
+                    <a th:href="@{/empleado/admin}" class="btn btn-primary btn-lg btn-block" sec:authorize="hasRole('ROLE_ADMIN')"> [[#{panel.empleado}]]</a>
+                    <a th:href="@{/entrada/adminEntrada}" class="btn btn-primary btn-lg btn-block" sec:authorize="hasRole('ROLE_ADMIN')"> [[#{panel.entrada}]]</a>
+                    <a th:href="@{/empleado/admin}" class="btn btn-primary btn-lg btn-block" sec:authorize="hasRole('ROLE_ADMIN')"> [[#{panel.pelicula}]]</a>
+                    <a th:href="@{/empleado/admin}" class="btn btn-primary btn-lg btn-block" sec:authorize="hasRole('ROLE_ADMIN')"> [[#{panel.salas}]]</a>
+                    <a th:href="@{/empleado/admin}" class="btn btn-primary btn-lg btn-block" sec:authorize="hasRole('ROLE_ADMIN')"> [[#{panel.admin}]]</a>
                     <a th:href="@{/reporte/empleado}" class="btn btn-primary btn-lg btn-block"> [[#{panel.reporte}]]</a>
                     <a th:href="@{/empleado/admin}" class="btn btn-primary btn-lg btn-block"> [[#{panel.verificacion}]]</a>
                     <a th:href="@{/empleado/admin}" class="btn btn-primary btn-lg btn-block"> [[#{panel.alimento}]]</a>
-                    <a th:href="@{/empleado/admin}" class="btn btn-primary btn-lg btn-block"> [[#{panel.boletos}]]</a>
+                    <a th:href="@{/empleado/admin}" class="btn btn-primary btn-lg btn-block" > [[#{panel.boletos}]]</a>
                 </div>
             </div>
         </div>

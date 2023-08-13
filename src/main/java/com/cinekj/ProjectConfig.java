@@ -71,15 +71,11 @@ public class ProjectConfig implements WebMvcConfigurer {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((request) -> request
-                .requestMatchers("/", "/index", "/static/static.images/**",
-                        "/registro/**", "/js/**", "/webjars/**","/css/**")
+                .requestMatchers("/", "/index", "/images/**",
+                        "/regis/**", "/js/**", "/webjars/**",
+                        "/css/**", "/comidas", "/contacto",
+                        "/nosotros", "/trabajaNosotros", "/iniciosesion/**")
                 .permitAll()
-                .requestMatchers(
-                        "/comidas", "/contacto",
-                        "/iniciosesion", "/nosotros",
-                        "/trabajaNosotros", "/registro/usuario",
-                        "/registro/guardar"
-                ).hasRole("ADMIN")
                 .requestMatchers(
                         "/empleado/admin",
                         "/empleado/nuevo",
@@ -87,29 +83,20 @@ public class ProjectConfig implements WebMvcConfigurer {
                         "/empleado/guardar",
                         "/empleado/modificar**",
                         "/entrada/adminEntrada",
-    
+
                         "/entrada/nuevo",
                         "/entrada/eliminar**",
                         "/entrada/guardar",
                         "/entrada/modificar**",
-                        "/reporte/empleado",
-                        "/reporte/nuevo",
-    
-                        "/reporte/guardar",
-                        "/reporte/eliminar**",
-                        "/reporte/modificar**",
-                        "/entrada/modificar**"
-                       
-    
+                        "/entrada/modificar**"        
+                ).hasRole("ADMIN")
+                .requestMatchers(
+                        "/panel/**",
+                        "/reporte/**"
                 ).hasAnyRole("ADMIN", "EMPLEADO")
-                .requestMatchers("/entrada/adminEntrada",
-                                 "/entrada/nuevo",
-                                  "/entrada/eliminar**",
-                                    "/entrada/guardar",
-                                     "/entrada/modificar**",
-                                    "/reporte/empleado", "/reporte/nuevo",
-                                       "/reporte/guardar", "/reporte/eliminar**",
-                                        "/reporte/modificar**")
+                .requestMatchers(
+                    "/comidas", "/contacto",
+                    "/nosotros", "/trabajaNosotros")
                 .hasRole("USER")
                 )
                 .formLogin((form) -> form
@@ -118,8 +105,7 @@ public class ProjectConfig implements WebMvcConfigurer {
         return http.build();
     }
 
-    /* El siguiente método se utiliza para completar la clase no es 
-    realmente funcional, la próxima semana se reemplaza con usuarios de BD */
+    
     @Bean
     public UserDetailsService users() {
         UserDetails admin = User.builder()
@@ -139,5 +125,6 @@ public class ProjectConfig implements WebMvcConfigurer {
                 .build();
         return new InMemoryUserDetailsManager(user, sales, admin);
     }
+
     
 }

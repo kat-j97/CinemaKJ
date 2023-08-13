@@ -3,7 +3,6 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
     <html>
-    <html>
         <head th:fragment="head">
             <meta charset="UTF-8">
                 <title>[[#{plantilla.header}]]</title>
@@ -19,35 +18,40 @@
                     <link link th:href="@{/css/nosotros.css}" rel="stylesheet" type="text/css"/>
                     <link link th:href="@{/css/login.css}" rel="stylesheet" type="text/css"/>
                     </head>
-        
-       
-       
+
+
+
 
                     <body>
                         <header th:fragment="header">
                             <div class="header-left">
                                 <h1><a th:href="@{/}">[[#{plantilla.header}]]</a></h1>                                    
                             </div>
-                            <div class="header-panel">
-                                <a th:href="@{/panel}" sec:authorize="hasRole('ROLE_VENDEDOR') or hasRole('ROLE_ADMIN')">
-                                    [[#{general.sistema}]]</a>
-                            </div>
-                            
-                            
+
+
+
                             <div class="header-right">
-                                <a th:href="@{/iniciosesion}">[[#{plantilla.login}]]</a>
-                                <a th:href="@{/registro/usuario}">[[#{plantilla.signin}]]</a>
-                            
+                                <a th:href="@{/iniciosesion}" sec:authorize="!isAuthenticated()">[[#{plantilla.login}]]</a>
+                                <a th:href="@{/regis/usuario}"sec:authorize="!isAuthenticated()">[[#{plantilla.signin}]]</a>
+      
+                                <a th:href="@{/panel}" sec:authorize="hasRole('ROLE_EMPLEADO') or hasRole('ROLE_ADMIN')">
+                                    [[#{general.sistema}]]</a>
+                                
+                                
                                 <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Lang</a>
                                 <ul class="dropdown-menu dropdown-menu-dark">
                                     <li><a class="dropdown-item"  th:href="@{/(lang=es)}">ES</a></li>
                                     <li><a class="dropdown-item" th:href="@{/(lang=en)}">EN</a></li>
                                 </ul>
-                           
+                                
+                                <a><form method="POST" th:action="@{/logout}">
+                                    <button sec:authorize="isAuthenticated()">[[#{plantilla.logout}]]</button>
+                                </form> </a>
+
 
                             </div>
-                            
-                                
+
+
                         </header>
 
                         <nav th:fragment="nav">
@@ -59,7 +63,7 @@
                                 <li><a th:href="@{/nosotros}">[[#{plantilla.nosotros}]]</a></li>
                             </ul>
 
-                            
+
                         </nav>
 
                         <footer th:fragment="footer">
