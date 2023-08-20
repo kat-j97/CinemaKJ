@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title></title>
+    </head>
+    <body>
+        <!-- 1 Sección para crear el boton de agregar... llamará a una ventana modal-->
+        <section th:fragment="botonesAgregar" class="py-4">
+            <div class="container" >
+                <div class="row" >
+                    <div class="col-md-3" >   
+                        <button 
+                            type="button" 
+                            class="btn btn-block" 
+                            data-bs-toggle="modal" 
+                            data-bs-target="#agregarComida" style="background-color: grey">
+                            <i class="fas fa-plus"></i> [[#{comida.add}]]
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2 Fragmento para agregar categoria, es la ventana modal -->
+        <section th:fragment="agregarComida">
+            <div id="agregarComida" 
+                 class="modal fade" 
+                 tabindex="-1" 
+                 aria-labelledby="exampleModalLabel" 
+                 aria-hidden="true">
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+                        <div class="modal-header bg-secondary text-white">
+                            <h5 class="modal-title">[[#{comida.add}]]</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div> 
+                        <form th:action="@{/comida/guardar}" th:object="${comida}"
+                              method="POST" class="was-validated" enctype="multipart/form-data" style="color: black">
+                            <div class="modal-body">                             
+                                <div class="mb-3">
+                                    <label for="tipoComida">[[#{comida.tipo}]]</label>
+                                    <input type="text" class="form-control" name="tipoComida" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="precio">[[#{comida.precio}]]</label>
+                                    <input type="number" class="form-control" name="precio" required="true"/>
+                                </div>              
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-secondary" type="submit">[[#{admin.fragm.save}]]</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+
+        <!-- 4 Fragmento que se utiliza en la página modifca.html -->
+        <section th:fragment="editarComida">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <form method="POST"
+                          th:action="@{/comida/guardar}" 
+                          th:object="${comida}"
+                          class="was-validated"                          
+                          enctype="multipart/form-data">
+                        <input type="hidden" name="idComida" th:field="*{idComida}"/>
+                        <section th:replace="~{/admin/fragmentosComida :: botonesEditar}"/>
+                        <div id=details>
+                            <div class="container" >
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="card" style="background-color: Grey">
+                                            <div class="card-header" style="background-color: black">
+                                                <h4>[[#{admin.actualizar}]]</h4>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="mb-3">
+                                                    <label for="tipoComida">[[#{comida.tipo}]]</label>
+                                                    <input type="text" class="form-control" 
+                                                           name="tipoComida" th:field="*{tipoComida}"
+                                                           required="true">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="precio">[[#{comida.precio}]]</label>
+                                                    <input type="number" class="form-control" name="precio" th:field="*{precio}" required="true"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5 Fragmento que se utiliza en el fragmento anterior -->
+        <section th:fragment="botonesEditar">
+            <div class="container py-4 ">
+                <div class="row">
+                    <div class="col-md-4 d-grid">
+                        <a th:href="@{/comida/admin}" class="btn btn-primary">
+                            <i class="fas fa-arrow-left"></i> [[#{admin.regresar}]]
+                        </a>
+                    </div>
+                    <div class="col-md-4 d-grid">                                
+                        <a th:href="@{/comida/eliminar/}+${comida.idComida}"
+                           class="btn btn-danger">
+                            <i class="fas fa-trash"></i> [[#{admin.eliminar}]]
+                        </a>
+                    </div>
+                    <div class="col-md-4 d-grid">
+                        <button type="submit" class="btn btn-success">
+                            <i class="fas fa-check"></i> [[#{admin.guardar}]]
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>                 
+
+
+    </body>
+</html>

@@ -33,23 +33,26 @@
                             <div class="header-right">
                                 <a th:href="@{/iniciosesion}" sec:authorize="!isAuthenticated()">[[#{plantilla.login}]]</a>
                                 <a th:href="@{/regis/usuario}"sec:authorize="!isAuthenticated()">[[#{plantilla.signin}]]</a>
-      
                                 <a th:href="@{/panel}" sec:authorize="hasRole('ROLE_EMPLEADO') or hasRole('ROLE_ADMIN')">
                                     [[#{general.sistema}]]</a>
-                                
-                                
+
+                                <ul class="navbar-nav" sec:authorize="isAuthenticated()">
+                                    <li class="nav-item my-auto">
+                                        <form method="POST" th:action="@{/logout}">
+                                            <button class="btn btn-dark"><i class="fa fa-sign-out-alt"></i></button>
+                                        </form>
+                                    </li>
+                                </ul>
+
+
                                 <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Lang</a>
                                 <ul class="dropdown-menu dropdown-menu-dark">
                                     <li><a class="dropdown-item"  th:href="@{/(lang=es)}">ES</a></li>
                                     <li><a class="dropdown-item" th:href="@{/(lang=en)}">EN</a></li>
-                                </ul>
-                                
-                                <a><form method="POST" th:action="@{/logout}">
-                                    <button sec:authorize="isAuthenticated()">[[#{plantilla.logout}]]</button>
-                                </form> </a>
-
-
+                                </ul>                                
                             </div>
+
+
 
 
                         </header>

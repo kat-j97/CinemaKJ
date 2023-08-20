@@ -74,21 +74,52 @@ public class ProjectConfig implements WebMvcConfigurer {
                 .requestMatchers("/", "/index", "/images/**",
                         "/regis/**", "/js/**", "/webjars/**",
                         "/css/**", "/comidas", "/contacto",
-                        "/nosotros", "/trabajaNosotros", "/iniciosesion/**")
+                        "/nosotros", "/trabajaNosotros", "/iniciosesion/**", "/logout/**")
                 .permitAll()
                 .requestMatchers(
+                        "/comida/admin",
+                        "/comida/nuevo",
+                        "/comida/eliminar/**",
+                        "/comida/guardar/**",
+                        "/comida/modificar/**",
+                        
                         "/empleado/admin",
                         "/empleado/nuevo",
-                        "/empleado/eliminar**",
-                        "/empleado/guardar",
-                        "/empleado/modificar**",
+                        "/empleado/eliminar/**",
+                        "/empleado/guardar/**",
+                        "/empleado/modificar/**",
+                        
                         "/entrada/adminEntrada",
-
                         "/entrada/nuevo",
-                        "/entrada/eliminar**",
-                        "/entrada/guardar",
-                        "/entrada/modificar**",
-                        "/entrada/modificar**"        
+                        "/entrada/eliminar/**",
+                        "/entrada/guardar/**",
+                        "/entrada/modificar/**",
+                        
+                        "/comida/admin",
+                        "/comida/nuevo",
+                        "/comida/eliminar/**",
+                        "/comida/guardar/**",
+                        "/comida/modificar/**",
+                        
+                        "/admin/admin",
+                        "/admin/nuevo",
+                        "/admin/eliminar/**",
+                        "/admin/guardar/**",
+                        "/admin/modificar/**",
+                        
+                        "/pelicula/admin",
+                        "/pelicula/nuevo",
+                        "/pelicula/eliminar/**",
+                        "/pelicula/guardar/**",
+                        "/pelicula/modificar/**",
+                        
+                        "/sala/admin",
+                        "/sala/nuevo",
+                        "/sala/eliminar/**",
+                        "/sala/guardar/**",
+                        "/sala/modificar/**",
+                 
+                        "/logout/**"
                 ).hasRole("ADMIN")
                 .requestMatchers(
                         "/panel/**",
@@ -102,6 +133,8 @@ public class ProjectConfig implements WebMvcConfigurer {
                 .formLogin((form) -> form
                 .loginPage("/login").permitAll())
                 .logout((logout) -> logout.permitAll());
+        
+               
         return http.build();
     }
 

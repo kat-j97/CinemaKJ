@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title></title>
+    </head>
+    <body>
+        <!-- 1 Sección para crear el boton de agregar... llamará a una ventana modal-->
+        <section th:fragment="botonesAgregar" class="py-4">
+            <div class="container" >
+                <div class="row" >
+                    <div class="col-md-3" >   
+                        <button 
+                            type="button" 
+                            class="btn btn-block" 
+                            data-bs-toggle="modal" 
+                            data-bs-target="#agregarAdmin" style="background-color: grey">
+                            <i class="fas fa-plus"></i> [[#{admin.add}]]
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2 Fragmento para agregar categoria, es la ventana modal -->
+        <section th:fragment="agregarAdmin">
+            <div id="agregarAdmin" 
+                 class="modal fade" 
+                 tabindex="-1" 
+                 aria-labelledby="exampleModalLabel" 
+                 aria-hidden="true">
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+                        <div class="modal-header bg-secondary text-white">
+                            <h5 class="modal-title">[[#{admin.add}]]</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div> 
+                        <form th:action="@{/admin/guardar}" th:object="${admin}"
+                              method="POST" class="was-validated" enctype="multipart/form-data" style="color: black">
+                            <div class="modal-body">                             
+                                <div class="mb-3">
+                                    <label for="nombreUsuario">[[#{admin.user}]]</label>
+                                    <input type="text" class="form-control" name="nombreUsuario" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="nombre">[[#{admin.nombre}]]</label>
+                                    <input type="text" class="form-control" name="nombre" required="true"/>
+                                </div>  
+                                <div class="mb-3">
+                                    <label for="apellidos">[[#{admin.apellidos}]]</label>
+                                    <input type="text" class="form-control" name="apellidos" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="edad">[[#{admin.edad}]]</label>
+                                    <input type="number" class="form-control" name="edad" required="true"/>
+                                </div> 
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-secondary" type="submit">[[#{admin.fragm.save}]]</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+
+        <!-- 4 Fragmento que se utiliza en la página modifca.html -->
+        <section th:fragment="editarAdmin">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <form method="POST"
+                          th:action="@{/admin/guardar}" 
+                          th:object="${admin}"
+                          class="was-validated"                          
+                          enctype="multipart/form-data">
+                        <input type="hidden" name="idAdmin" th:field="*{idAdmin}"/>
+                        <section th:replace="~{/admin/fragmentosAdminPerfil :: botonesEditar}"/>
+                        <div id=details>
+                            <div class="container" >
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="card" style="background-color: Grey">
+                                            <div class="card-header" style="background-color: black">
+                                                <h4>[[#{admin.actualizar}]]</h4>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="mb-3">
+                                                    <label for="nombreUsuario">[[#{admin.user}]]</label>
+                                                    <input type="text" class="form-control" 
+                                                           name="nombreUsuario" th:field="*{nombreUsuario}"
+                                                           required="true">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="nombre">[[#{admin.nombre}]]</label>
+                                                    <input type="text" class="form-control" name="nombre" th:field="*{nombre}" required="true"/>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="apellidos">[[#{admin.apellidos}]]</label>
+                                                    <input type="text" class="form-control" 
+                                                           name="apellidos" th:field="*{apellidos}"
+                                                           required="true">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="edad">[[#{admin.edad}]]</label>
+                                                    <input type="number" class="form-control" name="edad" th:field="*{edad}" required="true"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5 Fragmento que se utiliza en el fragmento anterior -->
+        <section th:fragment="botonesEditar">
+            <div class="container py-4 ">
+                <div class="row">
+                    <div class="col-md-4 d-grid">
+                        <a th:href="@{/admin/admin}" class="btn btn-primary">
+                            <i class="fas fa-arrow-left"></i> [[#{admin.regresar}]]
+                        </a>
+                    </div>
+                    <div class="col-md-4 d-grid">                                
+                        <a th:href="@{/admin/eliminar/}+${admin.idAdmin}"
+                           class="btn btn-danger">
+                            <i class="fas fa-trash"></i> [[#{admin.eliminar}]]
+                        </a>
+                    </div>
+                    <div class="col-md-4 d-grid">
+                        <button type="submit" class="btn btn-success">
+                            <i class="fas fa-check"></i> [[#{admin.guardar}]]
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>                 
+
+
+    </body>
+</html>
