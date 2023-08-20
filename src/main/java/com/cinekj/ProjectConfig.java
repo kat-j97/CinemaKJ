@@ -124,6 +124,8 @@ public class ProjectConfig implements WebMvcConfigurer {
                 .requestMatchers(
                         "/panel/**",
                         "/reporte/**"
+                        ,"/asientos/**"
+                        
                 ).hasAnyRole("ADMIN", "EMPLEADO")
                 .requestMatchers(
                     "/comidas", "/contacto",
