@@ -1,107 +1,136 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link link th:href="@{/css/style.css}" rel="stylesheet" type="text/css"/>
-    <title>Asientos K&J</title>
-  </head>
-  <body>
-    <div class="movie-container">
-      <label> Seleccione una Pelicula:</label>
-      <select id="movie">
-        <option value="220">Barbie</option>
-        <option value="320">Indiana Jones </option>
-        <option value="250">Openheimmer</option>
-        <option value="260">Rapidos y Furiosos x</option>
-      </select>
-    </div>
+<html 
+    xmlns="http://www.w3.org/1999/xhtml"       
+    xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+            <script src="https://kit.fontawesome.com/887a835504.js" crossorigin="anonymous"></script>
+            <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+            <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
+            <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+            <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+            <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+            <link link th:href="@{/css/style.css}" rel="stylesheet" type="text/css"/>
+            <title>Asientos K&J</title>   
+    </head>
+    
+    <body>
+        <nav th:replace="layout/plantillaAdmin :: nav" />
+        <section>
+            <div class="movie-container" >
+                <label> Seleccione una Pelicula:</label>
+                <select id="movie">
+                    <option value="220">Barbie 15:00</option>
+                    <option value="320">Barbie 18:30</option>
+                    <option value="250">Barbie 21:15 </option>
+                    <option value="260">Indiana Jones 15:00</option>
+                    <option value="260">Indiana Jones 18:30</option>
+                    <option value="260">Indiana Jones 21:15</option>
+                    <option value="260">Evil Dead 15:00</option>
+                    <option value="260">Evil Dead 18:30</option>
+                    <option value="260">Evil Dead 21:15</option>
+                    <option value="260">Oppenheimer 15:00</option>
+                    <option value="260">Oppenheimer 18:30</option>
+                    <option value="260">Oppenheimer 21:15</option>
 
-    <ul class="showcase">
-      <li>
-        <div class="seat"></div>
-        <small>Available</small>
-      </li>
-      <li>
-        <div class="seat selected"></div>
-        <small>Selected</small>
-      </li>
-      <li>
-        <div class="seat sold"></div>
-        <small>Sold</small>
-      </li>
-    </ul>
-    <div class="container">
-      <div class="screen"></div>
+                </select>
+            </div>
+        </section>
 
-      <div class="row">
-        <div class="seat">A1</div>
-        <div class="seat">A2</div>
-        <div class="seat">A3</div>
-        <div class="seat">A4</div>
-        <div class="seat">A5</div>
-        <div class="seat">A6</div>
-        <div class="seat">A7</div>
-        <div class="seat">A8</div>
-      </div>
+        <section>
+            <ul class="showcase">
+                <li>
+                    <div class="seat"></div>
+                    <small>Available</small>
+                </li>
+                <li>
+                    <div class="seat selected"></div>
+                    <small>Selected</small>
+                </li>
+                <li>
+                    <div class="seat sold"></div>
+                    <small>Sold</small>
+                </li>
+            </ul>
+            <div class="container">
+                <div class="screen"></div>
 
-      <div class="row">
-        <div class="seat">B1</div>
-        <div class="seat">B2</div>
-        <div class="seat">B3</div>
-        <div class="seat sold">B4</div>
-        <div class="seat sold">B5</div>
-        <div class="seat">B6</div>
-        <div class="seat">B7</div>
-        <div class="seat">B8</div>
-      </div>
-      <div class="row">
-        <div class="seat">C12</div>
-        <div class="seat">C2</div>
-        <div class="seat">C3</div>
-        <div class="seat">C4</div>
-        <div class="seat">C5</div>
-        <div class="seat">C6</div>
-        <div class="seat sold">C7</div>
-        <div class="seat sold">C8</div>
-      </div>
-      <div class="row">
-        <div class="seat">D1</div>
-        <div class="seat">D2</div>
-        <div class="seat">D3</div>
-        <div class="seat">D4</div>
-        <div class="seat">D5</div>
-        <div class="seat">D6</div>
-        <div class="seat">D7</div>
-        <div class="seat">D8</div>
-      </div>
-      <div class="row">
-        <div class="seat">E1</div>
-        <div class="seat">E2</div>
-        <div class="seat">E3</div>
-        <div class="seat sold">E4</div>
-        <div class="seat sold">E5</div>
-        <div class="seat">E6</div>
-        <div class="seat">E7</div>
-        <div class="seat">E8</div>
-      </div>
-      <div class="row">
-        <div class="seat">F1</div>
-        <div class="seat">F2</div>
-        <div class="seat">F3</div>
-        <div class="seat">F4</div>
-        <div class="seat sold">F5</div>
-        <div class="seat sold">F6</div>
-        <div class="seat sold">F7</div>
-        <div class="seat">F8</div>
-      </div>
-    </div>
+                <div class="row">
+                    <div class="seat">A1</div>
+                    <div class="seat">A2</div>
+                    <div class="seat">A3</div>
+                    <div class="seat">A4</div>
+                    <div class="seat">A5</div>
+                    <div class="seat">A6</div>
+                    <div class="seat">A7</div>
+                    <div class="seat">A8</div>
+                </div>
 
-    <p class="text">
-      Usted ha Seleccionado: <span id="count">0</span> asientos para la pelicula</span>
-    </p>
-    <!--<script src="script.js"></script>-->
-    <script th:src="@{/js/script.js}"></script>
-  </body>
-</html>
+                <div class="row">
+                    <div class="seat">B1</div>
+                    <div class="seat">B2</div>
+                    <div class="seat">B3</div>
+                    <div class="seat sold">B4</div>
+                    <div class="seat sold">B5</div>
+                    <div class="seat">B6</div>
+                    <div class="seat">B7</div>
+                    <div class="seat">B8</div>
+                </div>
+                <div class="row">
+                    <div class="seat">C12</div>
+                    <div class="seat">C2</div>
+                    <div class="seat">C3</div>
+                    <div class="seat">C4</div>
+                    <div class="seat">C5</div>
+                    <div class="seat">C6</div>
+                    <div class="seat sold">C7</div>
+                    <div class="seat sold">C8</div>
+                </div>
+                <div class="row">
+                    <div class="seat">D1</div>
+                    <div class="seat">D2</div>
+                    <div class="seat">D3</div>
+                    <div class="seat">D4</div>
+                    <div class="seat">D5</div>
+                    <div class="seat">D6</div>
+                    <div class="seat">D7</div>
+                    <div class="seat">D8</div>
+                </div>
+                <div class="row">
+                    <div class="seat">E1</div>
+                    <div class="seat">E2</div>
+                    <div class="seat">E3</div>
+                    <div class="seat sold">E4</div>
+                    <div class="seat sold">E5</div>
+                    <div class="seat">E6</div>
+                    <div class="seat">E7</div>
+                    <div class="seat">E8</div>
+                </div>
+                <div class="row">
+                    <div class="seat">F1</div>
+                    <div class="seat">F2</div>
+                    <div class="seat">F3</div>
+                    <div class="seat">F4</div>
+                    <div class="seat sold">F5</div>
+                    <div class="seat sold">F6</div>
+                    <div class="seat sold">F7</div>
+                    <div class="seat">F8</div>
+                </div>
+            </div>
+        </section>
+        <p class="text">
+            Usted ha Seleccionado: <span id="count">0</span> asientos para la pelicula</span>
+        </p>
+        <br> 
+            
+                                    <div class="d-flex justify-content-center">
+                                        <a th:href="@{/asientosForm}" class="btn btn-primary btn-lg btn-block" > [[#{panel.boletos}]]</a>
+                                    </div>
+                                    <!--<script src="script.js"></script>-->
+                                    <script th:src="@{/js/script.js}"></script>
+                                    </body>
+                                    </html>

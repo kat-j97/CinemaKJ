@@ -7,7 +7,7 @@ import lombok.Data;
 @Data //Permite crear los Set and Getters
 @Entity
 @Table(name="boleto")
-public class Verificacion implements Serializable{
+public class Boleto implements Serializable{
     
     private static final long serialVersionUID = 1L; //Version de Serializacion
     //Aqui llamamos los atributos de la tabla vs Java
@@ -18,12 +18,12 @@ public class Verificacion implements Serializable{
     private int numero;
     private String nombre;
     private String apellidos;
-    private int pelicula;
+    private String pelicula;
  
-    public Verificacion() {
+    public Boleto() {
     }
 
-    public Verificacion(int numero, String nombre, String apellidos, int pelicula) {
+    public Boleto(int numero, String nombre, String apellidos, String pelicula) {
         this.numero = numero;
         this.nombre = nombre;
         this.apellidos = apellidos;

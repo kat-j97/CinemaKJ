@@ -122,9 +122,14 @@ public class ProjectConfig implements WebMvcConfigurer {
                         "/logout/**"
                 ).hasRole("ADMIN")
                 .requestMatchers(
-                        "/panel/**",
+                        "/panel",
                         "/reporte/**"
                         ,"/asientos/**"
+                        ,"/asientosForm/**"
+                        ,"/boleto/boleto"
+                        ,"/boleto/guardar/**"
+                        ,"/boleto/verificar/**"
+                        ,"/acciones/panel"
                         
                 ).hasAnyRole("ADMIN", "EMPLEADO")
                 .requestMatchers(
