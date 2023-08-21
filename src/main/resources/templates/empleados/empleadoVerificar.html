@@ -32,6 +32,7 @@
                                                         <th>[[#{boleto.nombre}]]</th>
                                                         <th>[[#{boleto.apellidos}]]</th>
                                                         <th>[[#{boleto.pelicula}]]</th>
+                                                        <th>[[#{boleto.estado}]]</th>
                                                         <th></th><th></th>
                                                     </tr>
                                                 </thead>
@@ -42,14 +43,11 @@
                                                         <td th:text="${boleto.nombre}"></td>
                                                         <td th:text="${boleto.apellidos}"></td>
                                                         <td th:text="${boleto.pelicula}"></td>
+                                                        <td th:text="${boleto.estado}"></td>
                                                         <td>
-                                                            <a
-                                                                th:href="@{/boleto/verificar/}+${boleto.idBoleto}"
-                                                                type="button" 
-                                                                class="btn btn-success" 
-                                                                data-bs-toggle="modal" 
-                                                                data-bs-target="#verificadoModal">
-                                                                <i class=""fa fa-check""></i> [[#{admin.verificar}]]
+                                                            <a th:href="@{/boleto/modificar/}+${boleto.idBoleto}"
+                                                               class="btn btn-success"> 
+                                                               <i class="fa fa-check"></i> [[#{admin.verificar}]]
                                                             </a>                                                  
                                                             </tbody>
                                                             </table>
@@ -64,28 +62,7 @@
                                                             </div>
                                                             </section>
 
-                                                            <section>
-                                                                <div class="modal fade" id="verificadoModal" tabindex="-1" role="dialog" aria-labelledby="verificadoModalLabel" aria-hidden="true">
-                                                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                                                        <div class="modal-content" style="color:Black">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title" id="verificadoModalLabel">Verificado</h5>
-                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                                    <span aria-hidden="true">&times;</span>
-                                                                                </button>
-                                                                            </div>
-                                                                            <div class="modal-body">
-                                                                                ¡El boleto ha sido verificado correctamente!
-                                                                            </div>
-                                                                            <div class="modal-footer">
-                                                                                <a th:href="@{/boleto/boleto}" type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </section>
-
-
+                                                            
                                                             <br>
                                                                 <br>
                                                                     <br>

@@ -4,41 +4,38 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:sec="http://thymeleaf.org/extras/spring-security">
     <head th:replace="~{layout/plantilla :: head}">
-        <title>TechShop</title>
+        <title>Venta de Comidas</title>
     </head>
     <body>
-        <section th:fragment="listadoProductos" id="productos">
-            <div class="container">
+        <section th:fragment="listadoComidas" id="comidas">
+            <div class="container" style="color: black;">
                 <div class="row row-cols-2" >
-                    <h2 class="inline">[[#{index.nuestrosProductos}]]</h2>
+                    <h2 class="inline">[[#{index.comidas}]]</h2>
                     <div id="resultsBlock"></div></div>
                 <div class="row row-cols-3" 
-                     th:if="${productos != null and !productos.empty}">
-                    <div class="card" th:each="producto : ${productos}">
+                     th:if="${comidas != null and !comidas.empty}">
+                    <div class="card" th:each="comida : ${comidas}">
                         <div class="card-body">
-                            <h5 class="card-title">[[${producto.descripcion}]]</h5>
+                            <h5 class="card-title">[[${comida.tipoComida}]]</h5>
                             <figure>
-                                <img th:src="@{${producto.rutaImagen}}" height="200"/>
-                                <figcaption>[[${producto.precio}+' ('+${producto.existencias}+')']]
+                                <figcaption>[[${comida.precio}]]
                                 </figcaption>
                             </figure>
                             <form>
-                                <input type="hidden" name="texto" th:value="${producto.idProducto}"/>
-                                <input type="hidden" name="texto" th:value="${producto.existencias}"/>
+                                <input type="hidden" name="texto" th:value="${comida.idComida}"/>
                                 <button class="btn btn-ligth" id="addCar" 
                                         name="addCar" onclick="addCard(this.form)" 
                                         type="button"><i class="fas fa-cart-plus"></i></button>
-                            </form>
-                            <p class="card-text">[[${producto.detalle}]]</p>                            
+                            </form>                            
                         </div>
                     </div>
                 </div>
-                <div th:if="${productos == null or productos.empty}">
-                    [[#{producto.no_mostrar}]]</div>
+                <div th:if="${comidas == null or comidas.empty}">
+                    [[#{comida.no_mostrar}]]</div>
             </div>
         </section>
 
-        <div th:fragment="verCarrito" th:unless="${#lists.isEmpty(listaItems)}">            
+        <div th:fragment="verCarrito" >            
             <form action="/carrito/listado">
                 <button
                     type="submit"
@@ -50,7 +47,7 @@
         </div>     
 
         <section th:fragment="listadoCarrito" id="items">
-            <div class="container">
+            <div class="container" style="color:black;">
                 <div class="row">
                     <div class="col-md-9">
                         <div class="card">
@@ -62,8 +59,8 @@
                                     <thead class="thead-dark">
                                         <tr>
                                             <th>#</th>
-                                            <th>[[#{producto.descripcion}]]</th>
-                                            <th>[[#{producto.precio}]]</th>
+                                            <th>[[#{comida.tipoComida}]]</th>
+                                            <th>[[#{comida.precio}]]</th>
                                             <th>[[#{carrito.cantidad}]]</th>
                                             <th>[[#{carrito.total}]]</th>
                                             <th></th>
@@ -78,13 +75,13 @@
                                             <td class="text-center">[[${item.cantidad}]]</td>
                                             <td class="text-center">[[${item.cantidad*item.precio}]]</td>
                                             <td>
-                                                <a th:href="@{/carrito/eliminar/}+${item.idProducto}"
+                                                <a th:href="@{/carrito/eliminar/}+${item.idComida}"
                                                    class="btn btn-danger">
                                                     <i class='fas fa-trash'></i> [[#{accion.eliminar}]]
                                                 </a>
                                             </td>
                                             <td>
-                                                <a th:href="@{/carrito/modificar/}+${item.idProducto}"
+                                                <a th:href="@{/carrito/modificar/}+${item.idComida}"
                                                    class="btn btn-success">
                                                     <i class='fas fa-pencil'></i> [[#{accion.actualizar}]]
                                                 </a>
@@ -109,7 +106,7 @@
                         </div>
                         <div class="card text-center bg-success text-white mb-3">
                             <div class="card-body">
-                                <a th:href="@{/}"
+                                <a th:href="@{/venta}"
                                    class="btn btn-success">
                                     <i class='fas fa-reply'></i> [[#{carrito.seguirComprando}]]
                                 </a>

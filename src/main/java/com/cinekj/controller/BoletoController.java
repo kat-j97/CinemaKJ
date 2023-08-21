@@ -26,7 +26,7 @@ public class BoletoController {
         return "/empleados/empleadoVerificar";
     }
     
-    @GetMapping("/verificar/{idBoleto}")
+    @GetMapping("/eliminar/{idBoleto}")
     public String boletoEliminar(Boleto boleto) {
         boletoService.delete(boleto);
         return "redirect:/boleto/boleto";
@@ -36,6 +36,19 @@ public class BoletoController {
     public String usuarioGuardar(Boleto boleto) {
         boletoService.save(boleto);
         return "/acciones/panel";
+    }
+    
+    @PostMapping("/verificar")
+    public String usuarioVerficiar(Boleto boleto) {
+        boletoService.save(boleto);
+        return "redirect:/boleto/boleto";
+    }
+    
+    @GetMapping("/modificar/{idBoleto}")
+    public String boletoModificar(Boleto boleto, Model model) {
+        boleto = boletoService.getBoleto(boleto);
+        model.addAttribute("boleto", boleto);
+        return "/empleados/modificaBoleto";
     }
 
     

@@ -30,7 +30,7 @@
                         <form th:action="@{/carrito/guardar}"
                               method="post"
                               th:object="${item}">
-                            <input type="hidden" name="idProducto" th:field="*{idProducto}"/>
+                            <input type="hidden" name="idComida" th:field="*{idComida}"/>
                             <div class="form-group">
                                 <label for="cantidad">[[#{carrito.cantidad}]]:</label>
                                 <input type="number" name="cantidad" th:field="*{cantidad}" 
@@ -40,7 +40,7 @@
                                     <i class='fas fa-save'></i> [[#{accion.guardar}]]</button>
                             </div>
                         </form>
-                        <a th:href="@{/carrito/eliminar/}+${item.idProducto}"
+                        <a th:href="@{/carrito/eliminar/}+${item.idComida}"
                            class="btn btn-danger">
                             <i class='fas fa-trash'></i> [[#{accion.eliminar}]]
                         </a>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head th:replace="~{layout/plantilla :: head}">
+    
+<title>Venta de Productos</title>        
+</head>
+<body>
+    <header th:replace="layout/plantillaAdmin :: header" />
+        <nav th:replace="layout/plantillaAdmin :: nav" />
+
+<section th:replace="~{carrito/fragmentos :: listadoComidas}"/>
+         
+</body>
+</html>

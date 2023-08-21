@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title></title>
+    </head>
+    <body>
+
+        <!-- 4 Fragmento que se utiliza en la página modifca.html -->
+        <section th:fragment="editarBoleto">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <form method="POST"
+                          th:action="@{/boleto/verificar}" 
+                          th:object="${boleto}"
+                          class="was-validated"                          
+                          enctype="multipart/form-data">
+                        <input type="hidden" name="idBoleto" th:field="*{idBoleto}"/>
+                        <section th:replace="~{/empleados/fragmentosBoleto :: botonesEditar}"/>
+                        <div id=details>
+                            <div class="container" >
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="card" style="background-color: Grey">
+                                            <div class="card-header" style="background-color: black">
+                                                <h4>[[#{admin.actualizar}]]</h4>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="numero">[[#{boleto.numero}]]</label>
+                                            <input type="number" class="form-control" name="numero" th:field="*{numero}"  required="true" readonly="readonly"/>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="nombre">[[#{boleto.nombre}]]</label>
+                                            <input type="text" class="form-control" name="nombre" th:field="*{nombre}" required="true" readonly="readonly"/>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="apellidos">[[#{boleto.apellidos}]]</label>
+                                            <input type="text" class="form-control" name="apellidos" th:field="*{apellidos}" required="true" readonly="readonly"/>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="pelicula">[[#{boleto.pelicula}]]</label>
+                                            <input type="text" class="form-control" name="pelicula" th:field="*{pelicula}" required="true" readonly="readonly"/>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="estado">[[#{boleto.estado}]]</label>
+                                            <select class="form-control" name="estado" th:field="*{estado}" required="true">
+                                                <option value="Vendida">Vendida</option>
+                                                <option value="Verificado">Verificado</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            </form>
+            </div>
+            </div>
+        </section>
+
+        <!-- 5 Fragmento que se utiliza en el fragmento anterior -->
+        <section th:fragment="botonesEditar">
+            <div class="container py-4 ">
+                <div class="row">
+                    <div class="col-md-4 d-grid">
+                        <a th:href="@{/boleto/admin}" class="btn btn-primary">
+                            <i class="fas fa-arrow-left"></i> [[#{admin.regresar}]]
+                        </a>
+                    </div>
+                    <div class="col-md-4 d-grid">                                
+                        <a th:href="@{/boleto/eliminar/}+${boleto.idBoleto}"
+                           class="btn btn-danger">
+                            <i class="fas fa-trash"></i> [[#{admin.eliminar}]]
+                        </a>
+                    </div>
+                    <div class="col-md-4 d-grid">
+                        <button type="submit" class="btn btn-success">
+                            <i class="fas fa-check"></i> [[#{admin.guardar}]]
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>                 
+
+
+    </body>
+</html>

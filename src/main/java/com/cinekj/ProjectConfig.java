@@ -57,7 +57,7 @@ public class ProjectConfig implements WebMvcConfigurer {
     }
     
     
-    @Override
+    /*@Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("index");
         registry.addViewController("/index").setViewName("index");
@@ -164,7 +164,7 @@ public class ProjectConfig implements WebMvcConfigurer {
                 .roles("USER")
                 .build();
         return new InMemoryUserDetailsManager(user, sales, admin);
-    }
+    }*/
 
     
 }
