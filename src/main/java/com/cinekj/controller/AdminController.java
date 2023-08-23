@@ -35,14 +35,14 @@ public class AdminController {
     @PostMapping("/guardar")
     public String adminGuardar(Admin admin) {
         adminService.save(admin);
-        return "redirect:/admin/adminPerfiles";
+        return "redirect:/admin/admin";
     }
 
  
     @GetMapping("/eliminar/{idAdmin}")
     public String adminEliminar(Admin admin) {
         adminService.delete(admin);
-        return "redirect:/admin/adminPerfiles";
+        return "redirect:/admin/admin";
     }
 
     @GetMapping("/modificar/{idAdmin}")
