@@ -20,40 +20,21 @@
     
     <body>
         <nav th:replace="layout/plantillaAdmin :: nav" />
-        <section>
-            <div class="movie-container" >
-                <label> Seleccione una Pelicula:</label>
-                <select id="movie">
-                    <option value="220">Barbie 15:00</option>
-                    <option value="320">Barbie 18:30</option>
-                    <option value="250">Barbie 21:15 </option>
-                    <option value="260">Indiana Jones 15:00</option>
-                    <option value="260">Indiana Jones 18:30</option>
-                    <option value="260">Indiana Jones 21:15</option>
-                    <option value="260">Evil Dead 15:00</option>
-                    <option value="260">Evil Dead 18:30</option>
-                    <option value="260">Evil Dead 21:15</option>
-                    <option value="260">Oppenheimer 15:00</option>
-                    <option value="260">Oppenheimer 18:30</option>
-                    <option value="260">Oppenheimer 21:15</option>
-
-                </select>
-            </div>
-        </section>
+        
 
         <section>
             <ul class="showcase">
                 <li>
                     <div class="seat"></div>
-                    <small>Available</small>
+                    <small>[[#{asiento.available}]]</small>
                 </li>
                 <li>
                     <div class="seat selected"></div>
-                    <small>Selected</small>
+                    <small>[[#{asiento.selected}]]</small>
                 </li>
                 <li>
                     <div class="seat sold"></div>
-                    <small>Sold</small>
+                    <small>[[#{asiento.sold}]]</small>
                 </li>
             </ul>
             <div class="container">
