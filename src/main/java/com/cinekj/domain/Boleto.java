@@ -20,16 +20,18 @@ public class Boleto implements Serializable{
     private String apellidos;
     private String pelicula;
     private String estado;
+    private String sala;
  
     public Boleto() {
     }
 
-    public Boleto(int numero, String nombre, String apellidos, String pelicula, String estado) {
+    public Boleto(int numero, String nombre, String apellidos, String pelicula, String estado, String sala) {
         this.numero = numero;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.pelicula = pelicula;
         this.estado = estado;
+        this.sala = sala;
     }
   
 }

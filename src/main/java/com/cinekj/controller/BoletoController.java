@@ -35,7 +35,7 @@ public class BoletoController {
     @PostMapping("/guardar")
     public String usuarioGuardar(Boleto boleto) {
         boletoService.save(boleto);
-        return "/acciones/panel";
+        return "/asientos";
     }
     
     @PostMapping("/verificar")

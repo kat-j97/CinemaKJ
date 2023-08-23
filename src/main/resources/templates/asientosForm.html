@@ -18,58 +18,89 @@
                     <link link th:href="@{/css/nosotros.css}" rel="stylesheet" type="text/css"/>
                     <link link th:href="@{/css/login.css}" rel="stylesheet" type="text/css"/> 
                     </head>
-    <body>
-        
-        
-        <nav th:replace="layout/plantillaAdmin :: nav" />
-        <br>
-        <br>
-        <br>
-        
-<section>
-    <div class="d-flex justify-content-center align-items-center" >
-        <form th:action="@{/boleto/guardar}" th:object="${boleto}" method="POST" class="was-validated card" enctype="multipart/form-data" style="color: white; background-color: grey; width: 400px" >
+                    <body>
+                        <nav th:replace="layout/plantillaAdmin :: nav" />
+                        <br>
+                            <br>
+                                <br>
 
-            <div class="form-group text-center" style="padding-top: 20px">
-                <label for="numero">[[#{boleto.numero}]]</label>
-                <input type="number" class="form-control" id="numero" name="numero" required="true"/>
-            </div>
-            <div class="form-group text-center">
-                <label for="nombre">[[#{boleto.nombre}]]</label>
-                <input type="text" class="form-control" id="nombre" name="nombre" required="true"/>
-            </div>
-            <div class="form-group text-center">
-                <label for="apellidos">[[#{boleto.apellidos}]]</label>
-                <input type="text" class="form-control" id="apellidos" name="apellidos" required="true"/>
-            </div>
-            <div class="form-group text-center">
-                <label for="pelicula">[[#{boleto.pelicula}]]</label>
-                <input type="text" class="form-control" id="pelicula" name="pelicula" required="true"/>
-            </div>
+                                    <section>
+                                        <div class="d-flex justify-content-center align-items-center" >
+                                            <form th:action="@{/boleto/guardar}" th:object="${boleto}" method="POST" class="was-validated card" enctype="multipart/form-data" style="color: white; background-color: grey; width: 400px" >
 
-            <br>
+                                                <div class="form-group text-center" style="padding-top: 20px">
+                                                    <label for="numero">[[#{boleto.numero}]]</label>
+                                                    <input type="number" class="form-control" id="numero" name="numero" required="true"/>
+                                                </div>
+                                                <div class="form-group text-center">
+                                                    <label for="nombre">[[#{boleto.nombre}]]</label>
+                                                    <input type="text" class="form-control" id="nombre" name="nombre" required="true"/>
+                                                </div>
+                                                <div class="form-group text-center">
+                                                    <label for="apellidos">[[#{boleto.apellidos}]]</label>
+                                                    <input type="text" class="form-control" id="apellidos" name="apellidos" required="true"/>
+                                                </div>
+                                                <div class="form-group text-center">
+                                                    <label for="pelicula">[[#{boleto.pelicula}]]</label>
+                                                    <label for="sala">[[#{boleto.sala}]]</label>
+                                                    <select class="form-control" name="pelicula" required="true">
+                                                        <option value="220">Barbie 15:00</option>
+                                                        <option value="320">Barbie 18:30</option>
+                                                        <option value="250">Barbie 21:15 </option>
+                                                        <option value="260">Indiana Jones 15:00</option>
+                                                        <option value="260">Indiana Jones 18:30</option>
+                                                        <option value="260">Indiana Jones 21:15</option>
+                                                        <option value="260">Evil Dead 15:00</option>
+                                                        <option value="260">Evil Dead 18:30</option>
+                                                        <option value="260">Evil Dead 21:15</option>
+                                                        <option value="260">Oppenheimer 15:00</option>
+                                                        <option value="260">Oppenheimer 18:30</option>
+                                                        <option value="260">Oppenheimer 21:15</option>
+                                                        <option value="220">Megalodon 2 15:00</option>
+                                                        <option value="320">Megalodon 2 18:30</option>
+                                                        <option value="250">Megalodon 2 21:15 </option>
+                                                        <option value="260">Hablame  15:00</option>
+                                                        <option value="260">Hablame  18:30</option>
+                                                        <option value="260">Hablame  21:15</option>
+                                                        <option value="260">Elemental 15:00</option>
+                                                        <option value="260">Elemental 18:30</option>
+                                                        <option value="260">Elemental 21:15</option>
+                                                        <option value="260">Krakens y Sirenitas 15:00</option>
+                                                        <option value="260">Krakens y Sirenitas 18:30</option>
+                                                        <option value="260">Krakens y Sirenitas 21:15</option></select>
+                                                </div>
+                                                <div class="form-group text-center">
+                                                    <label for="sala">[[#{boleto.sala}]]</label>
+                                                    <select class="form-control" name="sala" required="true">
+                                                        <option value="Vendida">Regular</option>
+                                                        <option value="Verificado">VIP</option>
+                                                        <option value="Verificado">IMAX</option></select>                                                     
+                                                </div>
+                                                <br>
 
-            <br>
-            <div class="d-flex justify-content-center">
-                <button type="submit" class="btn btn-primary">[[#{btn.completar}]]</button>
-            </div>
-            <br>
-        </form>
-    </div>
- </section>
-        
-       <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Genera un número aleatorio entre 1 y 100 (ajusta el rango según sea necesario)
-        var randomNumber = Math.floor(Math.random() * 100) + 1;
+                                                    <br>
+                                                        <div class="d-flex justify-content-center">
+                                                            <button type="submit" class="btn btn-primary">[[#{btn.asientos}]]</button>
+                                                        </div>
+                                                        <br>
+                                                        <br>
+                                                        </form>
+                                                        </div>
+                                                        </section>
 
-        // Obtiene el elemento de entrada de número por su ID
-        var numeroInput = document.getElementById("numero");
 
-        // Establece el valor del campo "numero" con el número aleatorio
-        numeroInput.value = randomNumber;
-    });
-</script> 
-       
-    </body>
-</html>
+                                                        <script>
+                                                            document.addEventListener("DOMContentLoaded", function () {
+                                                                // Genera un número aleatorio entre 1 y 100 (ajusta el rango según sea necesario)
+                                                                var randomNumber = Math.floor(Math.random() * 100) + 1;
+
+                                                                // Obtiene el elemento de entrada de número por su ID
+                                                                var numeroInput = document.getElementById("numero");
+
+                                                                // Establece el valor del campo "numero" con el número aleatorio
+                                                                numeroInput.value = randomNumber;
+                                                            });
+                                                        </script> 
+
+                                                        </body>
+                                                        </html>
