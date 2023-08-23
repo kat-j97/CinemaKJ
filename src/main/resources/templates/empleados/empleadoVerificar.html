@@ -33,6 +33,8 @@
                                                         <th>[[#{boleto.apellidos}]]</th>
                                                         <th>[[#{boleto.pelicula}]]</th>
                                                         <th>[[#{boleto.estado}]]</th>
+                                                        <th>[[#{boleto.sala}]]</th>
+                                                        
                                                         <th></th><th></th>
                                                     </tr>
                                                 </thead>
@@ -44,6 +46,9 @@
                                                         <td th:text="${boleto.apellidos}"></td>
                                                         <td th:text="${boleto.pelicula}"></td>
                                                         <td th:text="${boleto.estado}"></td>
+                                                        <td th:text="${boleto.sala}"></td>
+                                                        
+                                                        
                                                         <td>
                                                             <a th:href="@{/boleto/modificar/}+${boleto.idBoleto}"
                                                                class="btn btn-success"> 

@@ -61,7 +61,7 @@
                             <ul class="nav-menu">
                                 <li><a th:href="@{/peliculas}">[[#{plantilla.cartelera}]]</a></li>
                                 <li><a th:href="@{/comidas}">[[#{plantilla.comidas}]]</a></li>
-                                <li><a th:href="@{/empleado/admin}">[[#{plantilla.salas}]]</a></li>
+                                <li><a th:href="@{/tusSalas}">[[#{plantilla.salas}]]</a></li>
                                 <li><a th:href="@{/nosotros}">[[#{plantilla.nosotros}]]</a></li>
                             </ul>
 
@@ -73,18 +73,25 @@
                                 <div class="footer-section">
                                     <h4>[[#{plantilla.consulta}]]</h4>
                                     <ul>
-                                        <li>[[#{plantilla.cartelera.footer}]]</li>
+                                        <li><a th:href="@{/peliculas}">[[#{plantilla.cartelera.footer}]]</a></li>
                                         <li>[[#{plantilla.proximas}]]</li>
                                         <li>[[#{plantilla.preventa}]]</li>
                                     </ul>
                                 </div>
                                 <div class="footer-section">
                                     <h4>[[#{plantilla.informacion}]]</h4>
-                                    <p>[[#{plantilla.historia}]]</p>
+                                    <p><a th:href="@{/nosotros}">[[#{plantilla.historia}]]</a></p>
                                 </div>
                                 <div class="footer-section">
                                     <h4>[[#{plantilla.siguenos}]]</h4>
-                                    <!-- Aquí puedes agregar los enlaces a tus redes sociales -->
+                                    <a href="#">
+                                        <img src="images/insta.jpg" alt="Instagram Logo" width="30" height="30">
+                                            K&Js Cinema
+                                    </a>
+                                    <a href="#">
+                                        <img src="images/facebook.jpg" alt="Facebook Logo" width="30" height="30">
+                                            K&Js Cinema
+                                    </a>
                                 </div>
                             </div>
                         </footer>

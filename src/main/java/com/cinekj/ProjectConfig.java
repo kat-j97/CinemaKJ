@@ -57,7 +57,7 @@ public class ProjectConfig implements WebMvcConfigurer {
     }
     
     
-    /*@Override
+    @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("index");
         registry.addViewController("/index").setViewName("index");
@@ -74,7 +74,8 @@ public class ProjectConfig implements WebMvcConfigurer {
                 .requestMatchers("/", "/index", "/images/**",
                         "/regis/**", "/js/**", "/webjars/**",
                         "/css/**", "/comidas", "/contacto",
-                        "/nosotros", "/trabajaNosotros", "/iniciosesion/**", "/logout/**")
+                        "/nosotros", "/trabajaNosotros", "/iniciosesion/**", "/logout/**",
+                          "/tusSalas","/peliculas")
                 .permitAll()
                 .requestMatchers(
                         "/comida/admin",
@@ -128,12 +129,15 @@ public class ProjectConfig implements WebMvcConfigurer {
                         ,"/asientosForm/**"
                         ,"/boleto/boleto"
                         ,"/boleto/guardar/**"
-                        ,"/boleto/verificar/**"
+                        ,"/boleto/verificar"
+                        ,"/boleto/modificar/**"
                         ,"/acciones/panel"
                         
                 ).hasAnyRole("ADMIN", "EMPLEADO")
                 .requestMatchers(
-                    "/comidas", "/contacto",
+                        "/asientos", "/asientosForm", "/boleto/eliminar/**","/carrito/**",
+                        "/boleto/guardar", "/comida/verificar/**" , "/comida/modificar/**", "/boleto",
+                    "/contacto",
                     "/nosotros", "/trabajaNosotros")
                 .hasRole("USER")
                 )
@@ -149,22 +153,22 @@ public class ProjectConfig implements WebMvcConfigurer {
     @Bean
     public UserDetailsService users() {
         UserDetails admin = User.builder()
-                .username("juan")
-                .password("{noop}123")
+                .username("Jesus123")
+                .password("{noop}Pass123")
                 .roles("USER", "EMPLEADO", "ADMIN")
                 .build();
         UserDetails sales = User.builder()
-                .username("rebeca")
-                .password("{noop}456")
+                .username("Jaf123")
+                .password("{noop}Pass123")
                 .roles("USER", "EMPLEADO")
                 .build();
         UserDetails user = User.builder()
-                .username("pedro")
-                .password("{noop}789")
+                .username("Kath123")
+                .password("{noop}Pass123")
                 .roles("USER")
                 .build();
         return new InMemoryUserDetailsManager(user, sales, admin);
-    }*/
+    }
 
     
 }

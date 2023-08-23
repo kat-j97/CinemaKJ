@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/plantilla :: head">
+</head>
+<body>
+    <header th:replace="layout/plantilla :: header" />
+    <nav th:replace="layout/plantilla :: nav" />
+
+    <div class="container mt-3" style="color:white;">
+        <h1>Carrito de Compras</h1>
+        <table class="table" style="color:white;">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <div class="d-flex justify-content-between">
+        <div>
+            <a th:href="@{/comidas}" class="btn btn-primary">[[#{comidas.volver}]]</a>
+        </div>
+        <div>
+            <a href="#" class="btn btn-success" id="imprimir-btn">[[#{comidas.imprimir}]]</a>
+        </div>
+    </div>
+    </div>
+
+    <footer th:replace="layout/plantilla :: footer" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KtQmAPnAvJ9zQz7h3h3Pzl5ycEJw5B7U7mJjCEx5PePR+E9/n3Wn6E5z4uZG1Jh8" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            var cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+            var tbody = $("tbody");
+
+            function updateTable() {
+                var total = 0;
+                tbody.empty();
+
+                cart.forEach(function (product) {
+                    var productTotal = product.price * product.quantity;
+                    total += productTotal;
+
+                    var row = $("<tr>");
+                    row.append($("<td>").text(product.title));
+                    row.append($("<td>").text(product.price));
+                    row.append($("<td>").text(product.quantity));
+                    row.append($("<td>").text(productTotal));
+
+                    tbody.append(row);
+                });
+
+                var totalRow = $("<tr>");
+                totalRow.append($("<td>").text("Total:").attr("colspan", "3"));
+                totalRow.append($("<td>").text(total));
+                tbody.append(totalRow);
+            }
+
+            updateTable();
+
+            var imprimirBtn = $("#imprimir-btn");
+            imprimirBtn.click(function () {
+                localStorage.removeItem("cart"); 
+                cart = []; 
+                updateTable(); 
+            });
+        });
+    </script>
+</body>
+</html>
+
+

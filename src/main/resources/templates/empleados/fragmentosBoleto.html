@@ -45,6 +45,10 @@
                                             <input type="text" class="form-control" name="pelicula" th:field="*{pelicula}" required="true" readonly="readonly"/>
                                         </div>
                                         <div class="mb-3">
+                                            <label for="sala">[[#{boleto.sala}]]</label>
+                                            <input type="text" class="form-control" name="sala" th:field="*{sala}" required="true" readonly="readonly"/>
+                                        </div>
+                                        <div class="mb-3">
                                             <label for="estado">[[#{boleto.estado}]]</label>
                                             <select class="form-control" name="estado" th:field="*{estado}" required="true">
                                                 <option value="Vendida">Vendida</option>
