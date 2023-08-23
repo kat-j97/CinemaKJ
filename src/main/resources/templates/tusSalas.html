@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"       
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="layout/plantilla :: head">
+
+    </head>
+
+    <body>
+        <header th:replace="layout/plantilla :: header" />
+        <nav th:replace="layout/plantilla :: nav" />
+
+        <main>
+            <section>
+                <h2><b>[[#{salas.conoce}]]</b></h2>
+                <p>
+                    [[#{salas.conoce}]]
+                </p>
+            </section>
+
+            <section>
+                <h2><b>[[#{salas.regulares}]]</b></h2>
+                <p>
+                    [[#{salas.regulares.p}]]
+                </p>
+            </section>
+
+            <section>
+                <h2><b>[[#{salas.vip}]]</b></h2>
+                <p>
+                    [[#{salas.vip.p}]]
+                </p>
+                salas.imax
+            </section>
+
+            <section>
+                <h2><b>[[#{salas.imax}]]</b></h2>
+                <p>
+                    [[#{salas.imax.p}]]
+                </p>
+            </section>
+        </main>
+
+        <footer th:replace="layout/plantilla :: footer" />
+    </body>
+</html>
